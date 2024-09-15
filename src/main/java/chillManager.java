@@ -1,10 +1,15 @@
 import java.io.ObjectStreamClass;
+import java.util.Scanner;
 
 //Esta es la rama para crear las funciones de Libros.
 
 public class chillManager {
     public static void main(String[] args) {
+        menu();
+    }
 
+    public static Scanner scanner(){
+        return new Scanner(System.in);
     }
 
     public static Object[][] categoriasLibros() {
@@ -47,4 +52,65 @@ public class chillManager {
         return null;
         //Fucion para agregar un libro nuevo dependiendo de ciertos parametros.
     }
+
+    public static void mostrarOpciones(){
+        System.out.println("\nMenú libros:");
+        System.out.println("1) Agregar libro.");
+        System.out.println("2) Buscar libro.");
+        System.out.println("3) Consultar disponibilidad de un producto.");
+        System.out.println("4) Ver todos los libros.");
+        System.out.println("5) Eliminar libro o actualizar libro.");
+        System.out.println("6) Salir.");
+        System.out.print("Ingrese el número de la opción que desea seleccionar: ");
+        //Funcion para imprimir las distintas opciones para la parte de libros
+    }
+
+    public static int leerOpcion(){
+        int opcion;
+        while (true) {
+            try {
+                opcion = scanner().nextInt();
+                if ((opcion >= 1) && (opcion <= 6)) {
+                    break;
+                } else {
+                    System.out.print("Opción inválida. Inténtelo nuevamente: ");
+                }
+            } catch(Exception InputMismatchException){
+                System.out.print("Entrada no válida. Ingrese un número: ");
+            }
+        }
+        return opcion;
+        //Esta funcion pide la opcion
+    }
+
+    public static void ejecutarOpcion(int opcion){
+        if(opcion == 1){
+
+        }
+    }
+
+    public static boolean continuarMenu(int opcion){
+        boolean continuar = true;
+        if(opcion == 2){
+            continuar = false;
+            System.out.println("Cerrando menú... ¡Hasta luego! ^^");
+        } else if(opcion != 1){
+            System.out.println("Opción no válida.");
+        }
+        return continuar;
+    }
+
+    public static void menu(){
+        boolean continuar = true;
+        while(continuar){
+            mostrarOpciones();
+            int opcion = leerOpcion();
+            ejecutarOpcion(opcion);
+            System.out.print("¿Desea realizar otra operación? (1 = Sí ; 2 = No): ");
+            int respuesta = scanner().nextInt();
+            continuar = continuarMenu(respuesta);
+        }
+        scanner().close();
+    }
+
 }
