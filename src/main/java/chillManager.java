@@ -72,7 +72,7 @@ public class chillManager {
     //Función para eliminar peliculas de la matriz
     public static void eliminarPelicula(Object [][] matrizPeliculas, String titulo){
         for (int i = 0; i < matrizPeliculas.length; i++) {
-            if (matrizPeliculas[i][0].equals(titulo)) {
+            if (matrizPeliculas[i][0] != null && matrizPeliculas[i][0].equals(titulo)) {
                 matrizPeliculas[i][0] = null;
                 matrizPeliculas[i][1] = null;
                 matrizPeliculas[i][2] = null;
