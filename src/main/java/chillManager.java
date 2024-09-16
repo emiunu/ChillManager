@@ -15,8 +15,9 @@ public class chillManager {
     public static boolean juegoUnico (Object [][] matrizJuegos, String titulo) {
         for (int row = 0; row < matrizJuegos.length; row++) {
             if (matrizJuegos[row][0] != null) {
-                if (matrizJuegos[row][0].equals(titulo))
+                if (((String) matrizJuegos[row][0]).replace(" ", "").toLowerCase().equals(titulo.replace(" ", "").toLowerCase())) {
                     return false;
+                }
             }
         }
         return true;
@@ -97,7 +98,7 @@ public class chillManager {
     public static int obtenerFilaJuego(Object[][] matrizJuegos, String titulo){ // obtener fila de un juego existente
         for (int i = 0; i < matrizJuegos.length; i++) {
             if (matrizJuegos[i][0] != null) {
-                if (matrizJuegos[i][0].equals(titulo)){
+                if (((String) matrizJuegos[i][0]).replace(" ", "").toLowerCase().equals(titulo.replace(" ", "").toLowerCase())){
                     return i;
                 }
             }
@@ -252,7 +253,7 @@ public class chillManager {
             System.out.println("Juego" + " | " + "Status" + " | " + "Año" + " | " + "DLC" + " | " + "Rating" + " | " + "Comentario" + " | ");
             mostrarFilaJuego(matrizJuegos, fila);
         } else {
-            System.out.println("No se encuentra en juego en el registro");
+            System.out.println("No se encuentra el juego en el registro");
         }
     }
 
