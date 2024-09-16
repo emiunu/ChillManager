@@ -248,7 +248,7 @@ public class chillManager {
         return status;
     }
 
-    //Funcion que muestra las opciones de status
+    //Función que muestra las opciones de status
     public static void opcionesStatusPelicula(){
         System.out.println("Status de película:");
         System.out.println("1. Sin ver");
@@ -256,7 +256,7 @@ public class chillManager {
         System.out.print("Seleccione una opción: ");
     }
 
-    //Funcion para ingresar rating
+    //Función para ingresar rating
     public static int ingresarRating(){
         int rating;
         while(true){
