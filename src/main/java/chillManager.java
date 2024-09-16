@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class chillManager {
     public static void main(String[] args) {
+        iniciarLibros();
     }
 
     public static void iniciarLibros(){
@@ -17,43 +18,57 @@ public class chillManager {
 
     public static Object[][] matrizLibros() {
         Object [][] matrizLibros = new Object[10][7];
-        matrizLibros[0] = new Object[]{(String)"ISBN",(String)"title",(String)"autor",(String)"year",(String)"status",(String)"rating",(String)"commment"};
         return matrizLibros;
-        //Se crea la primera fila con las diferentes categorias.
     }
-
-    //Verificacion de existencia de libro unico por isbn
-    public static boolean libroUnico(Object [][]matrizLibros,int ISBN){
+    //Función para comprobar que si ya existe. Compara el título con la posición en la matriz, ambas cosas en minúsculas y sin espacios.
+    public static boolean libroUnico(Object[][] matrizLibros, int isbn){
         for (int i = 0; i < matrizLibros.length; i++) {
-            if (matrizLibros[i][0] != null){
-                if (matrizLibros[i][0].equals(ISBN)) {
+            if (matrizLibros[i][0] != null) {
+                if (matrizLibros[i][0].equals(isbn)) {
                     return false;
                 }
-            }else{
-                break;
             }
         }
         return true;
     }
 
-    //Fucion para agregar un libro nuevo dependiendo de ciertos parametros.
-    public static Object[][] agregarLibro(Object[][] matrizLibros,int ISBN,String titulo,String autor,String year,String status,String rating,String commment) {
-        if(libroUnico(matrizLibros,ISBN)){
-            for (int i = 0; i < matrizLibros.length; i++) {
-            if (matrizLibros[i][0] == null) {
-                matrizLibros[i][0] = ISBN;
-                matrizLibros[i][1] = titulo;
-                matrizLibros[i][2] = autor;
-                matrizLibros[i][3] = year;
-                matrizLibros[i][4] = status;
-                matrizLibros[i][5] = rating;
-                matrizLibros[i][6] = commment;
-                return matrizLibros;
+    //Función para saber si existe espacio disponible en la matriz.
+    public static boolean espacioDisponible(Object[][] matrizLibros){
+        for (int i = 0; i < matrizLibros.length; i++) {
+            if (matrizLibros[i][0] == null){
+                return true;
             }
         }
+        return false;
+    }
+
+    //Función para obtener la primera fila vacía disponible para agregar datos. Solo debe ser llamada si hay espacio disponible.
+    public static int obtenerFilaVacia(Object[][] matrizLibros){
+        for (int i = 0; i < matrizLibros.length; i++) {
+            if (matrizLibros[i][0] == null){
+                return i;
+            }
         }
-        System.out.println("Ya existe este libro en la biblioteca.");
-        return null;
+        return 0;
+    }
+
+    public static Object[][] escribirInfoLibro(Object[][] matrizLibros,int ISBN,String titulo,String autor,int year,String status,int rating,String commment, int fila){
+        matrizLibros[fila][0] = ISBN;
+        matrizLibros[fila][1] = titulo;
+        matrizLibros[fila][2] = autor;
+        matrizLibros[fila][3] = year;
+        matrizLibros[fila][4] = status;
+        matrizLibros[fila][5] = rating;
+        matrizLibros[fila][6] = commment;
+        return matrizLibros;
+    }
+    //Fucion para agregar un libro nuevo dependiendo de ciertos parametros.
+    public static void agregarLibro(Object[][] matrizLibros, int isbn) {
+        if (libroUnico(matrizLibros,isbn)){
+            if (espacioDisponible(matrizLibros)){
+                escribirInfoLibro(matrizLibros,isbn,pedirString("Dime el titulo del libro: "),pedirString("Dime el autor del libro: "),pedirInt("Dime el año del libro: "), transformarStatus(pedirStatus()),pedirRating(),pedirString("Ingrese un comentario sobre el libro: "),obtenerFilaVacia(matrizLibros));
+            }else System.out.println("No hay espacio disponible para agregar un libro.");
+        }else System.out.println("El libro ya se encuentra agregado.");
     }
 
     //Funcion para imprimir las distintas opciones para la parte de libros
@@ -87,12 +102,17 @@ public class chillManager {
     }
 
     //Función de ejecutar las opciones del menú.
-    public static void ejecutarOpcion(Object[][] matrizSeries, int opcion){
-        if (opcion == 1) { //agregar
-        } else if (opcion == 2) { //buscar.
-        } else if (opcion == 3) { //actualizar.
-        } else if (opcion == 4) { //eliminar.
-        } else if (opcion == 5) { //ver todos.
+    public static void ejecutarOpcion(Object[][] matrizLibros, int opcion){
+        if (opcion == 1) {
+            agregarLibro(matrizLibros, pedirInt("Dime el isbn del libro: "));//agregar
+        } else if (opcion == 2) {
+            buscarLibro(matrizLibros,pedirInt("Dime el isbn del libro que quieres buscar: "));//buscar.
+        } else if (opcion == 3) {
+            actualizarLibro(matrizLibros,pedirInt("Dime el isbn del libro que quieres actualizar: ")    );//actualizar.
+        } else if (opcion == 4) {
+            eliminarLibro(matrizLibros, pedirInt("Dime el isbn del libro que quieres eliminar: "));//eliminar.
+        } else if (opcion == 5) {
+            mostrarLibros(matrizLibros);//ver todos.
         } else if (opcion == 6) { //salir.
             System.out.print("A continuación, confirme. "); //se ejecutará el continuar en el menú.
         }
@@ -122,15 +142,6 @@ public class chillManager {
         scanner().close();
     }
 
-    //Función para saber si existe espacio disponible.
-    public static boolean espacioDisponible(Object[][] matrizLibros){
-        for (int i = 0; i < matrizLibros.length; i++) {
-            if (matrizLibros[i][0] == null){
-                return true; //Devuelve true si la matriz encuentra algun espacio null, ya que si existe espacio.
-            }
-        }
-        return false; //Devuelve false si no encuentra ningun espacio vacia.
-    }
 
     //Funcion que muestra las opciones de status de lecutra de libro.
     public static void opcionesStatusLibros(){
@@ -142,11 +153,13 @@ public class chillManager {
     }
 
     //Función para obtener la fila en la que está el libro que se busca. Solo debe ser llamada si el libro ya fue encontrado (ya existe en la matriz).
-    public static int obtenerFilaDeSerie(Object[][] matrizSeries, String titulo){
-        for (int i = 0; i < matrizSeries.length; i++) {
-            if (matrizSeries[i][1].equals(titulo)){
-                return i;
+    public static int obtenerFilaDeLibro(Object[][] matrizLibros, int isbn){
+        for (int i = 0; i < matrizLibros.length; i++) {
+            if (matrizLibros[i][0] != null){
+                if (matrizLibros[i][1].equals(isbn)){
+                    return i;
             }
+        }
         }
         return 0;
     }
@@ -169,68 +182,74 @@ public class chillManager {
         return rating;
     }
 
-    public static int pedirAño(){
+    public static int pedirInt(String mensaje){
         int valor;
         while (true) {
             try {
-                System.out.print("Ingrese el año del libro: ");
+                System.out.print(mensaje);
                 valor = scanner().nextInt();
                 break;
-            } catch(Exception InputMismatchException){
-                System.out.print("Entrada no válida. Ingrese un número. ");
+            } catch(Exception InputMismatchException) {
+                System.out.println("Entrada no válida. Ingrese un número. ");
             }
         }
         return valor;
     }
 
-    public static String pedirTitulo(){
-        System.out.print("Dime el titulo del libro: ");
+    //Función para pedir un String, junto con el mensaje correspondiente de para qué se utilizará.
+    public static String pedirString(String mensaje){
+        System.out.print(mensaje);
         return scanner().nextLine();
     }
 
-    public static String pedirAutor(){
-        System.out.print("Dime el autor del libro: ");
-        return scanner().nextLine();
-    }
-
-    public static String pedirComentario(){
-        System.out.print("Dime un comentario del libro: ");
-        return scanner().nextLine();
-    }
-
-    public static void buscarLibro(Object[][] matrizLibros, String isbn){
-        for (int i = 0; i < matrizLibros.length; i++) {
-            if (matrizLibros[i][1] != null) {
-                if (matrizLibros[i][0].equals(isbn)) {
-                    System.out.println("Se ha encontrado el libro.");
-                }else {
-                    System.out.println("No se ha encontrado el libro");
+    //Función para pedir el estado de visualización.
+    public static int pedirStatus(){
+        int opcion;
+        while (true) {
+            try {
+                System.out.print("Ingrese el estado de lectura (1 = Sin leer ; 2 = Leyendo ; 3 = Terminado): ");
+                opcion = scanner().nextInt();
+                if ((opcion >= 1) && (opcion <= 3)) {
+                    break;
+                } else {
+                    System.out.println("Opción inválida. Inténtelo nuevamente.");
                 }
-            }else {
-                System.out.println("No se ha encontrado el libro.");
+            } catch (Exception InputMismatchException) {
+                System.out.println("Entrada no válida. Ingrese un número.");
             }
         }
+        return opcion;
     }
 
-    public static void actualizarLibro(Object[][]matriz,int ISBN,String titulo,String autor,String year,String status,String rating,String commment){
-        for (int i = 0; i < matriz.length; i++) {
-            if (matriz[i][1] != null) {
-                if (matriz[i][0].equals(ISBN)) {
-                    matriz[i][1] = titulo;
-                    matriz[i][2] = autor;
-                    matriz[i][3] = year;
-                    matriz[i][4] = status;
-                    matriz[i][5] = rating;
-                    matriz[i][6] = commment;
-                }else{
-                    System.out.println("No se ha encontrado el libro.");
-                }
-            }
+    //Transformar lo pedido en la función pedirStatus().
+    public static String transformarStatus(int opcion){
+        String status = "";
+        if (opcion == 1){
+            status = "Sin leer";
+        } else if (opcion == 2){
+            status = "Leyendo";
+        } else if (opcion == 3){
+            status = "Terminado";
         }
+        return status;
     }
 
-    public static void eliminarLibro(Object[][] matrizLibros,int fila){
-        for (int i = 0; i < matrizLibros.length; i++) {
+    public static void buscarLibro(Object[][] matrizLibros, int isbn){
+        if (!libroUnico(matrizLibros,isbn)){
+            int fila = obtenerFilaDeLibro(matrizLibros,isbn);
+            System.out.println("Libro encontrado.");
+            System.out.println("『 ISBN: "+matrizLibros[fila][0]+" | Titulo: "+matrizLibros[fila][1]+" | Autor: "+matrizLibros[fila][2]+" | Año: "+matrizLibros[fila][3]+" | Status: "+matrizLibros[fila][4]+" | Rating: "+matrizLibros[fila][5]+" | Comentarios: "+matrizLibros[fila][6]+" 』");
+        }else System.out.println("Libro no encontrado.");
+    }
+
+    public static void actualizarLibro(Object[][]matrizLibros,int ISBN){
+        if (!libroUnico(matrizLibros,ISBN)){
+            int fila = obtenerFilaDeLibro(matrizLibros,ISBN);
+            escribirInfoLibro(matrizLibros,ISBN,pedirString("Dime el nuevo titulo: "),pedirString("Dime el nuevo autor: "),pedirInt("Dime el nuevo año: "),transformarStatus(pedirStatus()),pedirRating(),pedirString("Dime un comentario del libro: "), fila);
+        } else System.out.println("Libro no encontrado.");
+    }
+
+    public static Object[][] vaciarLibro(Object[][] matrizLibros,int fila){
             matrizLibros[fila][0] = null;
             matrizLibros[fila][1] = null;
             matrizLibros[fila][2] = null;
@@ -238,20 +257,17 @@ public class chillManager {
             matrizLibros[fila][4] = null;
             matrizLibros[fila][5] = null;
             matrizLibros[fila][6] = null;
-            System.out.println("Se ha eliminado el libro.");
-        }
+            return matrizLibros;
     }
 
-    public static String transformarStatus(int opcion){
-        String status = "";
-        if (opcion == 1){
-            status = "Sin leer.";
-        } else if (opcion == 2){
-            status = "Leyendo.";
-        } else if (opcion == 3){
-            status = "Terminado.";
+    public static void eliminarLibro(Object[][] matrizLibros, int isbn){
+        if (!libroUnico(matrizLibros,isbn)) { //Si la serie ya se encuentra en la matriz.
+            int fila = obtenerFilaDeLibro(matrizLibros,isbn); //Obtener la fila donde está esa serie.
+            vaciarLibro(matrizLibros,fila);
+            System.out.println("Libro eliminado correctamente.");
+        } else {
+            System.out.println("No se encontró el libro. Asegúrese de ingresar el isbn de manera correcta.");
         }
-        return status;
     }
 
     public static void mostrarLibros(Object[][] matrizLibros){
