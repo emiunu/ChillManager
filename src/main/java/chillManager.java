@@ -221,7 +221,7 @@ public class chillManager {
     }
 
     //Función imprimir opciones del menú.
-    public static void mostrarOpciones(){
+    public static void mostrarOpcionesSeries(){
         System.out.println("\nMenú de series:");
         System.out.println("1) Agregar serie.");
         System.out.println("2) Buscar serie.");
@@ -291,14 +291,14 @@ public class chillManager {
 
     //Función para iniciar la matriz con el menú.
     public static void iniciar(){
-        menu(matrizSeries());
+        menuSeries(matrizSeries());
     }
 
     //Función menú.
-    public static void menu(Object[][] matrizSeries){
+    public static void menuSeries(Object[][] matrizSeries){
         boolean continuar = true;
         while(continuar){
-            mostrarOpciones();
+            mostrarOpcionesSeries();
             int opcion = leerOpcion();
             ejecutarOpcion(matrizSeries, opcion);
             System.out.print("¿Desea realizar otra operación? (1 = Sí ; 2 = No): ");
