@@ -259,8 +259,8 @@ public class chillManager {
     public static void actualizarJuego (Object[][] matrizJuegos) {
         String nombreJuego = pedirString("Ingrese el nombre del juego a modificar: ");
         if (!juegoUnico(matrizJuegos, nombreJuego)) {
-            System.out.println("Ingrese los datos del juego");
-            modificarFila(matrizJuegos, pedirString("Ingrese el nuevo nombre"), ingresarStatus(), ingresarAno(), ingresarDLC(), obtenerRating(), pedirString("Ingrese un comentario: "), obtenerFilaJuego(matrizJuegos, nombreJuego));
+            System.out.println("Ingrese los datos del juego: ");
+            modificarFila(matrizJuegos, pedirString("Ingrese el nuevo nombre: "), ingresarStatus(), ingresarAno(), ingresarDLC(), obtenerRating(), pedirString("Ingrese un comentario: "), obtenerFilaJuego(matrizJuegos, nombreJuego));
         } else {
             System.out.println("No se encuentra en juego en el registro, no se puede modificar.");
         }
@@ -274,7 +274,7 @@ public class chillManager {
     }
 
     public static Object [][] borrarJuego (Object[][] matrizJuegos) {
-        String nombreJuego = pedirString("Ingrese el nombre del juego a eliminar");
+        String nombreJuego = pedirString("Ingrese el nombre del juego a eliminar: ");
         if (!juegoUnico(matrizJuegos, nombreJuego)) {
             hacerFilaNull(matrizJuegos, obtenerFilaJuego(matrizJuegos, nombreJuego));
         }
