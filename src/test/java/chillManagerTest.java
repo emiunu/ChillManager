@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -51,12 +50,12 @@ class chillManagerTest {
     }
 
     @Test
-    void vaciarLibro() {
-        assertNull(chillManager.vaciarLibro(matrizLibros,4)[4][0]);
-        assertNull(chillManager.vaciarLibro(matrizLibros,4)[4][1]);
-        assertNull(chillManager.vaciarLibro(matrizLibros,4)[4][2]);
-        assertNull(chillManager.vaciarLibro(matrizLibros,4)[4][3]);
-        assertNull(chillManager.vaciarLibro(matrizLibros,4)[4][4]);
+    void vaciarFila() {
+        assertNull(chillManager.vaciarFila(matrizLibros,4,7)[4][0]);
+        assertNull(chillManager.vaciarFila(matrizLibros,1,7)[4][1]);
+        assertNull(chillManager.vaciarFila(matrizLibros,4,7)[4][2]);
+        assertNull(chillManager.vaciarFila(matrizLibros,4,7)[4][3]);
+        assertNull(chillManager.vaciarFila(matrizLibros,4,7)[4][4]);
     }
 
 }
