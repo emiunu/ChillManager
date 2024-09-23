@@ -84,7 +84,7 @@ public class chillManager {
     }
 
     public static Object[][] modificarFilaJuegos(Object[][] matriz, String titulo, String status, int year, int dlc, int rating, String comment, int fila) { // modifica una fila especifica de forma breve
-        matriz[fila] = new Object[]{(String) titulo, (String) status, (Integer) year, (Integer) dlc, (Integer) rating, (String) comment};
+        matriz[fila] = new Object[]{(String) titulo, (Integer) year, (Integer) dlc, (String) status, (Integer) rating, (String) comment};
         return matriz;
     }
 

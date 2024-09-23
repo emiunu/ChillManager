@@ -6,15 +6,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class chillManagerTest {
 
-    Object [][] matrizJuegos = new Object[5][7];
+    Object [][] matrizJuegos = new Object[5][6];
 
     @BeforeEach
     void setUp() {
-        matrizJuegos[0] = new Object[]{"Serie1",1,1,1,"Sin empezar", 10, "Comentario"};
-        matrizJuegos[1] = new Object[]{"Serie2",1,1,1,"Sin empezar", 10, "Comentario"};
-        matrizJuegos[2] = new Object[]{"Serie3",1,1,1,"Sin empezar", 10, "Comentario"};
-        matrizJuegos[3] = new Object[]{"Serie4",1,1,1,"Sin empezar", 10, "Comentario"};
-        matrizJuegos[4] = new Object[]{"Serie5",1,1,1,"Sin empezar", 10, "Comentario"};
+        matrizJuegos[0] = new Object[]{"Juego1",2020, 1,"Sin jugar", 10, "Comentario"};
+        matrizJuegos[1] = new Object[]{"Juego2",2021, 0,"Sin jugar", 10, "Comentario"};
+        matrizJuegos[2] = new Object[]{"Juego3",2022, 2,"Sin jugar", 10, "Comentario"};
+        matrizJuegos[3] = new Object[]{"Juego4",2023, 0,"Sin jugar", 10, "Comentario"};
+        matrizJuegos[4] = new Object[]{"Juego5",2024, 1,"Sin jugar", 10, "Comentario"};
     }
 
     @AfterEach
@@ -26,21 +26,22 @@ class chillManagerTest {
         matrizJuegos[4] = null;
     }
     @Test
-    void conseguirNumeroFila() {
-        assertEquals(0,chillManager.obtenerFilaJuego(matrizJuegos,"Serie1"));
-        assertEquals(1,chillManager.obtenerFilaJuego(matrizJuegos,"Serie2"));
-        assertEquals(2,chillManager.obtenerFilaJuego(matrizJuegos,"Serie3"));
-        assertEquals(3,chillManager.obtenerFilaJuego(matrizJuegos,"Serie4"));
-        assertEquals(4,chillManager.obtenerFilaJuego(matrizJuegos,"Serie5"));
+    void obtenerFilaJuego() {
+        assertEquals(0,chillManager.obtenerFilaJuego(matrizJuegos,"Juego1"));
+        assertEquals(1,chillManager.obtenerFilaJuego(matrizJuegos,"Juego2"));
+        assertEquals(2,chillManager.obtenerFilaJuego(matrizJuegos,"Juego3"));
+        assertEquals(3,chillManager.obtenerFilaJuego(matrizJuegos,"Juego4"));
+        assertEquals(4,chillManager.obtenerFilaJuego(matrizJuegos,"Juego5"));
     }
+
     @Test
-    void juegoUnica () {
-        assertFalse(chillManager.juegoUnico(matrizJuegos,"Serie1"));
-        assertFalse(chillManager.juegoUnico(matrizJuegos,"Serie2"));
-        assertFalse(chillManager.juegoUnico(matrizJuegos,"Serie3"));
-        assertFalse(chillManager.juegoUnico(matrizJuegos,"Serie4"));
-        assertFalse(chillManager.juegoUnico(matrizJuegos,"Serie5"));
-        assertTrue(chillManager.juegoUnico(matrizJuegos,"Serie6"));
+    void juegoUnico () {
+        assertFalse(chillManager.juegoUnico(matrizJuegos,"Juego1"));
+        assertFalse(chillManager.juegoUnico(matrizJuegos,"Juego2"));
+        assertFalse(chillManager.juegoUnico(matrizJuegos,"Juego3"));
+        assertFalse(chillManager.juegoUnico(matrizJuegos,"Juego4"));
+        assertFalse(chillManager.juegoUnico(matrizJuegos,"Juego5"));
+        assertTrue(chillManager.juegoUnico(matrizJuegos,"Juego6"));
     }
     @Test
     void espaciodisponible () {
