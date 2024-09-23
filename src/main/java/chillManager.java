@@ -647,6 +647,19 @@ public class chillManager {
         return new Object[10][8];
     }
 
+    //Transformar lo pedido en la función pedirStatus().
+    public static String transformarStatusSerie(int opcion){
+        String status = "";
+        if (opcion == 1){
+            status = "Sin empezar";
+        } else if (opcion == 2){
+            status = "Viendo";
+        } else if (opcion == 3){
+            status = "Terminada";
+        }
+        return status;
+    }
+
     //Función para comprobar que si ya existe. Compara el título con la posición en la matriz, ambas cosas en minúsculas y sin espacios.
     public static boolean serieUnica(Object[][] matrizSeries, String titulo){
         String tituloIngresado = titulo.replace(" ","").toLowerCase();
