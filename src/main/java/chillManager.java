@@ -133,7 +133,7 @@ public class chillManager {
     public static int obtenerFilaLibro(Object[][] matrizLibros, int isbn){
         for (int i = 0; i < matrizLibros.length; i++) {
             if (matrizLibros[i][0] != null){
-                if (matrizLibros[i][1].equals(isbn)){
+                if (matrizLibros[i][0].equals(isbn)){
                     return i;
                 }
             }
