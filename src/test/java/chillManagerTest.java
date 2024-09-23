@@ -38,10 +38,10 @@ class chillManagerTest {
     }
 
     @Test
-    void transformarStatus() {
-        assertEquals("Sin empezar",chillManager.transformarStatus(1));
-        assertEquals("Viendo",chillManager.transformarStatus(2));
-        assertEquals("Terminada",chillManager.transformarStatus(3));
+    void transformarStatusSerie() {
+        assertEquals("Sin empezar",chillManager.transformarStatusSerie(1));
+        assertEquals("Viendo",chillManager.transformarStatusSerie(2));
+        assertEquals("Terminada",chillManager.transformarStatusSerie(3));
     }
 
     @Test
@@ -57,9 +57,9 @@ class chillManagerTest {
     }
 
     @Test
-    void obtenerFilaDeSerie() {
-        assertEquals(0,chillManager.obtenerFilaDeSerie(matrizSeries,"Serie1"));
-        assertEquals(6,chillManager.obtenerFilaDeSerie(matrizSeries,"ser ie 7"));
+    void obtenerFilaSerie() {
+        assertEquals(0,chillManager.obtenerFilaSerie(matrizSeries,"Serie1"));
+        assertEquals(6,chillManager.obtenerFilaSerie(matrizSeries,"ser ie 7"));
     }
 
     @Test
@@ -88,14 +88,14 @@ class chillManagerTest {
     }
 
     @Test
-    void vaciarSerie() {
-        assertNull(chillManager.vaciarSerie(matrizSeries,7)[7][0]);
-        assertNull(chillManager.vaciarSerie(matrizSeries,7)[7][1]);
-        assertNull(chillManager.vaciarSerie(matrizSeries,7)[7][2]);
-        assertNull(chillManager.vaciarSerie(matrizSeries,7)[7][3]);
-        assertNull(chillManager.vaciarSerie(matrizSeries,7)[7][4]);
-        assertNull(chillManager.vaciarSerie(matrizSeries,7)[7][5]);
-        assertNull(chillManager.vaciarSerie(matrizSeries,7)[7][6]);
-        assertNull(chillManager.vaciarSerie(matrizSeries,7)[7][7]);
+    void vaciarFila() {
+        assertNull(chillManager.vaciarFila(matrizSeries,7,8)[7][0]);
+        assertNull(chillManager.vaciarFila(matrizSeries,7,8)[7][1]);
+        assertNull(chillManager.vaciarFila(matrizSeries,7,8)[7][2]);
+        assertNull(chillManager.vaciarFila(matrizSeries,7,8)[7][3]);
+        assertNull(chillManager.vaciarFila(matrizSeries,7,8)[7][4]);
+        assertNull(chillManager.vaciarFila(matrizSeries,7,8)[7][5]);
+        assertNull(chillManager.vaciarFila(matrizSeries,7,8)[7][6]);
+        assertNull(chillManager.vaciarFila(matrizSeries,7,8)[7][7]);
     }
 }

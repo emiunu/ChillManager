@@ -187,7 +187,7 @@ public class chillManager {
     public static void eliminarSerie(Object[][] matrizSeries, String titulo){
         if (!serieUnica(matrizSeries,titulo)) { //Si la serie ya se encuentra en la matriz.
             int fila = obtenerFilaSerie(matrizSeries,titulo); //Obtener la fila donde está esa serie.
-            vaciarFila(matrizSeries,fila,7);
+            vaciarFila(matrizSeries,fila,8);
             System.out.println("Serie eliminada correctamente.");
         } else {
             System.out.println("No se encontró la serie.");
