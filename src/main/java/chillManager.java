@@ -280,7 +280,7 @@ public class chillManager {
         } else if (opcion == 5) { //show all game
             mostrarJuegos(matrizJuegos);
         } else if (opcion == 6) { //exit game
-            System.out.print("Volviendo al menú general...");
+            System.out.println("Volviendo al menú general...");
         }
     }
 
@@ -419,7 +419,7 @@ public class chillManager {
         } else if (opcion == 5) {
             mostrarLibros(matrizLibros);//ver todos.
         } else if (opcion == 6) { //salir.
-            System.out.print("Volviendo al menu general... "); //volver al menu general.
+            System.out.println("Volviendo al menu general... "); //volver al menu general.
         }
     }
 
@@ -624,7 +624,7 @@ public class chillManager {
         } else if (opcion == 5) { //ver todos.
             verMatrizPeliculas(matrizPeliculas);
         } else if (opcion == 6) { //volver al menú.
-            System.out.print("Volviendo al menú general...");
+            System.out.println("Volviendo al menú general...");
         }
     }
 
@@ -786,7 +786,7 @@ public class chillManager {
         } else if (opcion == 5) { //ver todas las series.
             mostrarSeries(matrizSeries);
         } else if (opcion == 6) { //volver al menú.
-            System.out.print("Volviendo al menú general...");
+            System.out.println("Volviendo al menú general...");
         }
     }
 
