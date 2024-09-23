@@ -1,7 +1,4 @@
-import java.io.ObjectStreamClass;
 import java.util.Scanner;
-
-//Esta es la rama para crear las funciones de Libros.
 
 public class chillManager {
     public static void main(String[] args) {
@@ -324,7 +321,7 @@ public class chillManager {
         matrizLibros[fila][6] = commment;
         return matrizLibros;
     }
-    //Fucion para agregar un libro nuevo dependiendo de ciertos parametros.
+    //Función para agregar un libro nuevo dependiendo de ciertos parámetros.
     public static void agregarLibro(Object[][] matrizLibros, int isbn) {
         if (libroUnico(matrizLibros,isbn)){
             if (espacioDisponible(matrizLibros)){
@@ -396,7 +393,7 @@ public class chillManager {
         System.out.println("FIN DEL LISTADO.");
     }
 
-    //Funcion para imprimir las distintas opciones para la parte de libros
+    //Función para imprimir las distintas opciones para la parte de libros
     public static void mostrarOpcionesLibros(){
         System.out.println("\nMenú libros:");
         System.out.println("1) Agregar libro.");
@@ -420,7 +417,7 @@ public class chillManager {
         } else if (opcion == 5) {
             mostrarLibros(matrizLibros);//ver todos.
         } else if (opcion == 6) { //salir.
-            System.out.print("Volviendo al menu general... "); //volvera al menu general.
+            System.out.print("Volviendo al menu general... "); //volver al menu general.
         }
     }
 
