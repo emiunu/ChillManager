@@ -1,64 +1,43 @@
-import com.sun.source.tree.BreakTree;
-
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class chillManager {
     public static void main(String[] args) {
-        gameMenu();
+        Object [][] juegos = new Object[10][6];
+        menuJuegos(juegos);
     }
 
-    public static Object[][] categoriasJuegos () { // inicializa la matriz de datos con las categorías en la primera fila
-        return new Object[10][6];
-    }
-
-    public static boolean juegoUnico (Object [][] matrizJuegos, String titulo) {
-        for (int row = 0; row < matrizJuegos.length; row++) {
-            if (matrizJuegos[row][0] != null) {
-                if (((String) matrizJuegos[row][0]).replace(" ", "").toLowerCase().equals(titulo.replace(" ", "").toLowerCase())) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
-    public static Object[][] modificarFila (Object[][] matriz, String titulo, String status, int year, int dlc, int rating, String comment, int row) { // modifica una fila especifica de forma breve
-        matriz[row] = new Object[]{(String) titulo, (String) status, (Integer) year, (Integer) dlc, (Integer) rating, (String) comment};
-        return matriz;
-    }
-
-    public static Object[][] agregarJuego (Object[][] matrizJuegos, String titulo, String status, int year, int dlc, int rating, String comment) {
-        if (freeSpace(matrizJuegos)) {
-            for (int i = 0; i < matrizJuegos.length; i++) {
-                if (matrizJuegos[i][0] == null) {
-                    modificarFila(matrizJuegos, titulo, status, year, dlc, rating, comment, i);
-                    return matrizJuegos;
-                }
-            }
-        }
-        System.out.println("No hay espacio para el juego.");
-        return matrizJuegos;
-    }
-
-    public static void mostrarJuegos (Object[][] matrizJuegos) {
-        System.out.println("Juego" + " | " + "Status" + " | " + "Año" + " | " + "DLC" + " | " + "Rating" + " | " + "Comentario" + " | ");
-        for (int row = 0; row < matrizJuegos.length; row++) {
-            if (matrizJuegos[row][0] != null) {
-                mostrarFilaJuego(matrizJuegos, row);
+    public static int pedirIntPositivo (String mensaje) {
+        while (true) {
+            int numero = pedirInt(mensaje);
+            if (numero < 0) {
+                System.out.println("Ingrese un número positivo.");
+            } else {
+                return numero;
             }
         }
     }
 
-    public static void mostrarFilaJuego (Object[][] matrizJuegos, int row) {
-        System.out.println(matrizJuegos[row][0] + " | " + matrizJuegos[row][1] + " | " + matrizJuegos[row][2] + " | " + matrizJuegos[row][3] + " | " + matrizJuegos[row][4] + " | " + matrizJuegos[row][5] + " | ");
+    public static int leerOpcionLimitada(String mensaje, int min, int max){
+        System.out.print(mensaje);
+        int opcion;
+        while (true) {
+            try {
+                opcion = scanner().nextInt();
+                if ((opcion >= min) && (opcion <= max)) {
+                    break;
+                } else { System.out.print("Opción sale del rango. Inténtelo nuevamente: "); }
+            } catch(Exception InputMismatchException){
+                System.out.print("Entrada no válida. Ingrese un número: ");
+            }
+        }
+        return opcion;
     }
 
     public static Scanner scanner(){ // inicia scanner de forma abreviada
         return new Scanner(System.in);
     }
 
-    public static int requestInt(String mensaje){ // Pide un numero entero que no tiene restriccion de ser positivo o negativo
+    public static int pedirInt (String mensaje){ // Pide un numero entero que no tiene restriccion de ser positivo o negativo
         int value;
         while (true) {
             try {
@@ -74,211 +53,182 @@ public class chillManager {
 
     public static String pedirString(String mensaje){
         System.out.print(mensaje);
-        return scanner().nextLine();
-    }
-
-    public static int obtenerRating(){
-        int rating;
-        while (true) {
-            try {
-                System.out.print("Ingrese su rating (del 1 al 10): ");
-                rating = scanner().nextInt();
-                if ((rating >= 1) && (rating <= 10)) { // escala de rating
-                    break;
-                } else {
-                    System.out.print("Opción inválida. Inténtelo nuevamente: ");
-                }
-            } catch(Exception InputMismatchException){
-                System.out.print("Entrada no válida. Ingrese un número: ");
-            }
+        String string;
+        while (true){
+            string = scanner().nextLine();
+            if (string.isEmpty()){
+                System.out.print("Por favor ingrese una entrada no vacía: ");
+            }else{break;}
         }
-        return rating;
+        return string;
     }
 
-    public static int obtenerFilaJuego(Object[][] matrizJuegos, String titulo){ // obtener fila de un juego existente
-        for (int i = 0; i < matrizJuegos.length; i++) {
-            if (matrizJuegos[i][0] != null) {
-                if (((String) matrizJuegos[i][0]).replace(" ", "").toLowerCase().equals(titulo.replace(" ", "").toLowerCase())){
-                    return i;
-                }
-            }
-        }
-        return 0;
-    }
-
-    public static boolean freeSpace (Object[][] matrizSeries){
-        for (int i = 0; i < matrizSeries.length; i++) {
-            if (matrizSeries[i][0] == null){
+    public static boolean espacioDisponible (Object[][] matriz){
+        for (int fila = 0; fila < matriz.length; fila++) {
+            if (matriz[fila][0] == null){
                 return true;
             }
         }
         return false;
     }
 
-    public static void mostrarOpciones(){
+    public static boolean juegoUnico (Object [][] matrizJuegos, String titulo) {
+        for (int fila = 0; fila < matrizJuegos.length; fila++) {
+            if (matrizJuegos[fila][0] != null) {
+                if (((String) matrizJuegos[fila][0]).replace(" ", "").toLowerCase().equals(titulo.replace(" ", "").toLowerCase())) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public static Object[][] modificarFilaJuegos(Object[][] matriz, String titulo, String status, int year, int dlc, int rating, String comment, int fila) { // modifica una fila especifica de forma breve
+        matriz[fila] = new Object[]{(String) titulo, (String) status, (Integer) year, (Integer) dlc, (Integer) rating, (String) comment};
+        return matriz;
+    }
+
+    public static Object[][] agregarJuego (Object[][] matrizJuegos, String titulo, String status, int year, int dlc, int rating, String comment) {
+        if (espacioDisponible(matrizJuegos)) {
+            for (int fila = 0; fila < matrizJuegos.length; fila++) {
+                if (matrizJuegos[fila][0] == null) {
+                    modificarFilaJuegos(matrizJuegos, titulo, status, year, dlc, rating, comment, fila);
+                    return matrizJuegos;
+                }
+            }
+        }
+        System.out.println("No hay espacio para el juego.");
+        return matrizJuegos;
+    }
+
+    public static void mostrarJuegos (Object[][] matrizJuegos) {
+        System.out.println("LISTA DE JUEGOS");System.out.println("===================================");
+        for (int fila = 0; fila < matrizJuegos.length; fila++) {
+            if (matrizJuegos[fila][0] != null) {
+                mostrarFilaJuego(matrizJuegos, fila);
+            }
+        }
+        System.out.println("FIN DEL LISTADO");
+    }
+
+    public static void mostrarFilaJuego (Object[][] matrizJuegos, int fila) {
+        System.out.println("『 Título: " + matrizJuegos[fila][0] + " | Estatus : " + matrizJuegos[fila][1] + " | Año: " + matrizJuegos[fila][2] + " | DLC: " + matrizJuegos[fila][3] + " | Rating: " + matrizJuegos[fila][4] + " | Comentario: " + matrizJuegos[fila][5] + " 』");
+    }
+
+    public static int obtenerRating(){
+        return leerOpcionLimitada("Ingrese su rating (del 1 al 10; 1 = puntaje más bajo ; 10 = puntaje más alto): ", 1, 10);
+    }
+
+    public static int obtenerFilaJuego(Object[][] matrizJuegos, String titulo){ // obtener fila de un juego existente
+        for (int fila = 0; fila < matrizJuegos.length; fila++) {
+            if (matrizJuegos[fila][0] != null) {
+                if (((String) matrizJuegos[fila][0]).replace(" ", "").toLowerCase().equals(titulo.replace(" ", "").toLowerCase())){
+                    return fila;
+                }
+            }
+        }
+        return 0;
+    }
+
+    public static void mostrarOpcionesJuegos(){
         System.out.println("\nMenú de Juegos:");
         System.out.println("1) Agregar juego.");
         System.out.println("2) Buscar juego.");
         System.out.println("3) Actualizar/modificar juego.");
         System.out.println("4) Eliminar juego.");
-        System.out.println("5) Ver todas los juegos.");
-        System.out.println("6) Salir.");
-        System.out.print("Ingrese el número de la opción que desea seleccionar: ");
-    }
-    public static int escogerOpcion(int min, int max){
-        int option;
-        while (true) {
-            try {
-                option = scanner().nextInt();
-                if ((option >= min) && (option <= max)) {
-                    break;
-                } else {
-                    System.out.print("Opción sale del rango. Inténtelo nuevamente: ");
-                }
-            } catch(Exception InputMismatchException){
-                System.out.print("Entrada no válida. Ingrese un número: ");
-            }
-        }
-        return option;
+        System.out.println("5) Ver todos los juegos.");
+        System.out.println("6) Volver.");
     }
 
-    public static void correrOpciones(Object[][] matrizJuegos, int option){
-        if (option == 1) { //add game
+    public static void ejecutarOpcionJuego (Object[][] matrizJuegos, int opcion){
+        if (opcion == 1) { //add game
             anadirJuego(matrizJuegos);
-        }else if (option == 2) { //search game
+        }else if (opcion == 2) { //search game
             buscarJuego(matrizJuegos);
-        } else if (option == 3) { //update game
+        } else if (opcion == 3) { //update game
             actualizarJuego(matrizJuegos);
-        } else if (option == 4) { //delete game
+        } else if (opcion == 4) { //delete game
             borrarJuego(matrizJuegos);
-        } else if (option == 5) { //show all game
+        } else if (opcion == 5) { //show all game
             mostrarJuegos(matrizJuegos);
-        } else if (option == 6) { //exit game
-            System.out.print("A continuación, confirme. ");
+        } else if (opcion == 6) { //exit game
+            System.out.print("Volviendo al menú general...");
         }
     }
 
-    public static boolean continueMenu(int option){
-        boolean pass = true;
-        if(option == 0){
-            pass = false;
-            System.out.println("Cerrando menú ");
-        } else if(option != 1){
-            System.out.println("Opción no válida.");
-        }
-        return pass;
-    }
-
-    public static void gameMenu(){
-        boolean pass = true;
-        Object[][] juegos = categoriasJuegos();
-        while(pass){
-            mostrarOpciones();
-            int option = escogerOpcion(1, 6);
-            correrOpciones(juegos, option);
-            System.out.print("¿Desea realizar otra operación? (1 = Sí ; 0 = No): ");
-            int userAnswer = escogerOpcion(0, 1);
-            pass = continueMenu(userAnswer);
-        }
-        scanner().close();
-    }
-
-    public static String ingresarStatus(){
-        Scanner scanner = scanner();
-        String status = "";
-        int opcion;
+    public static void menuJuegos (Object[][] matrizJuegos ){
         while(true){
-            try{
-                opcionesStatusJuego();
-                opcion = escogerOpcion(1, 3);
-                if (opcion == 1){
-                    status = "Sin jugar";
-                    break;
-                } else if (opcion == 2){
-                    status = "Jugando";
-                    break;
-                }else{
-                    status = "Terminado";
-                    break;
-                }
-            } catch (InputMismatchException e){
-                System.out.print("Ingrese una entrada valida. ");
-                scanner.nextLine();
+            mostrarOpcionesJuegos();
+            int opcion = leerOpcionLimitada("Ingrese el número de la opción que desea seleccionar: ",1, 6);
+            ejecutarOpcionJuego(matrizJuegos, opcion);
+            if (opcion == 6) {
+                break;
             }
         }
+    }
+
+    public static String ingresarStatusJuego(){
+        String status = "";
+        opcionesStatusJuego();
+        int opcion = leerOpcionLimitada("Seleccione una opción: ",1, 3);
+        if (opcion == 1){
+            status = "Sin jugar";
+        } else if (opcion == 2){
+            status = "Jugando";
+        }else { status = "Terminado";}
         return status;
-    }
-
-    public static int ingresarAno () {
-        while (true) {
-            int year = requestInt("Ingrese el año de lanzamiento: ");
-            if (year < 0) {
-                System.out.println("Ingrese un número positivo");
-            } else {
-                return year;
-            }
-        }
-    }
-
-    public static int ingresarDLC () {
-        while (true) {
-            int dlc = requestInt("Ingrese la cantidad de DLC: ");
-            if (dlc < 0) {
-                System.out.println("Ingrese un número mayor o igual a 0");
-            } else {
-                return dlc;
-            }
-        }
     }
 
     public static void opcionesStatusJuego(){
         System.out.println("Status de Videojuego:");
-        System.out.println("1. Sin jugar");
-        System.out.println("2. Jugando");
-        System.out.println("3. Completado");
-        System.out.print("Seleccione una opción: ");
+        System.out.println("1. Sin jugar.");
+        System.out.println("2. Jugando.");
+        System.out.println("3. Completado.");
     }
 
     public static void anadirJuego(Object[][] matrizJuegos) {
         String gameName = pedirString("Ingrese el nombre del videojuego: ");
         if (juegoUnico(matrizJuegos, gameName)) {
-            agregarJuego(matrizJuegos, gameName, ingresarStatus(), ingresarAno(), ingresarDLC(), obtenerRating(), pedirString("Ingrese un comentario: "));
-        }
+            agregarJuego(matrizJuegos, gameName, ingresarStatusJuego(), pedirIntPositivo("Ingrese la fecha: "), pedirIntPositivo("Ingrese la cantidad de DLC: "), obtenerRating(), pedirString("Ingrese un comentario: "));
+            System.out.print("Se ha agregado correctamente.");
+        } else { System.out.println("El juego ya se encuentra registrado"); }
     }
 
     public static void buscarJuego (Object[][] matrizJuegos) {
         String nombreJuego = pedirString("Ingrese el nombre del juego: ");
         if (!juegoUnico(matrizJuegos, nombreJuego)) {
+            System.out.println("Juego encontrado. ");
             int fila = obtenerFilaJuego(matrizJuegos, nombreJuego);
-            System.out.println("Juego" + " | " + "Status" + " | " + "Año" + " | " + "DLC" + " | " + "Rating" + " | " + "Comentario" + " | ");
             mostrarFilaJuego(matrizJuegos, fila);
         } else {
-            System.out.println("No se encuentra el juego en el registro");
+            System.out.println("No se encuentra el juego.");
         }
     }
 
     public static void actualizarJuego (Object[][] matrizJuegos) {
-        String nombreJuego = pedirString("Ingrese el nombre del juego a modificar: ");
+        String nombreJuego = pedirString("Ingrese el nombre del juego que quiere modificar: ");
         if (!juegoUnico(matrizJuegos, nombreJuego)) {
             System.out.println("Ingrese los datos del juego: ");
-            modificarFila(matrizJuegos, pedirString("Ingrese el nuevo nombre: "), ingresarStatus(), ingresarAno(), ingresarDLC(), obtenerRating(), pedirString("Ingrese un comentario: "), obtenerFilaJuego(matrizJuegos, nombreJuego));
+            modificarFilaJuegos(matrizJuegos, pedirString("Ingrese el nuevo nombre: "), ingresarStatusJuego(), pedirIntPositivo("Ingrese la fecha: "), pedirIntPositivo("Ingrese la cantidad de DLC: "), obtenerRating(), pedirString("Ingrese un comentario: "), obtenerFilaJuego(matrizJuegos, nombreJuego));
+            System.out.println("Actualización realizada correctamente. ");
         } else {
-            System.out.println("No se encuentra en juego en el registro, no se puede modificar.");
+            System.out.println("No se encuentra el juego.");
         }
     }
 
-    public static Object [][] hacerFilaNull (Object[][] matrizJuegos, int row) {
-        for (int i = 0; i < 6; i ++) {
-            matrizJuegos[row][i] = null;
+    public static Object [][] vaciarFila(Object[][] matriz, int fila, int columnas) {
+        for (int i = 0; i < columnas; i ++) {
+            matriz[fila][i] = null;
         }
-        return matrizJuegos;
+        return matriz;
     }
 
     public static Object [][] borrarJuego (Object[][] matrizJuegos) {
-        String nombreJuego = pedirString("Ingrese el nombre del juego a eliminar: ");
+        String nombreJuego = pedirString("Ingrese el nombre del juego que quiere eliminar: ");
         if (!juegoUnico(matrizJuegos, nombreJuego)) {
-            hacerFilaNull(matrizJuegos, obtenerFilaJuego(matrizJuegos, nombreJuego));
-        }
+            vaciarFila(matrizJuegos, obtenerFilaJuego(matrizJuegos, nombreJuego), 6);
+            System.out.println("Juego eliminado correctamente.");
+        } else { System.out.println("No se encuentra el juego");}
         return matrizJuegos;
     }
 }

@@ -44,10 +44,10 @@ class chillManagerTest {
     }
     @Test
     void espaciodisponible () {
-        assertFalse(chillManager.freeSpace(matrizJuegos));
-        chillManager.hacerFilaNull(matrizJuegos,0);
-        assertTrue(chillManager.freeSpace(matrizJuegos));
+        assertFalse(chillManager.espacioDisponible(matrizJuegos));
+        chillManager.vaciarFila(matrizJuegos,0,6);
+        assertTrue(chillManager.espacioDisponible(matrizJuegos));
         chillManager.agregarJuego(matrizJuegos,"titulo10", "No empezado", 2002, 0, 10, "");
-        assertFalse(chillManager.freeSpace(matrizJuegos));
+        assertFalse(chillManager.espacioDisponible(matrizJuegos));
     }
 }
