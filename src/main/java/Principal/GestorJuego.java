@@ -15,9 +15,8 @@ public class GestorJuego {
 	 * 
 	 * @param juego
 	 */
-	public boolean agregarJuego(Juego juego) {
-		// TODO - implement GestorJuego.agregarJuego
-		throw new UnsupportedOperationException();
+	public void agregarJuego(Juego juego) {
+
 	}
 
 	public void ejecutarEliminarJuego() {
@@ -29,9 +28,8 @@ public class GestorJuego {
 	 * 
 	 * @param juego
 	 */
-	public boolean eliminarJuego(Juego juego) {
-		// TODO - implement GestorJuego.eliminarJuego
-		throw new UnsupportedOperationException();
+	public void eliminarJuego(Juego juego) {
+
 	}
 
 	public void ejecutarModificarJuego() {
@@ -43,9 +41,8 @@ public class GestorJuego {
 	 * 
 	 * @param juego
 	 */
-	public boolean modificarJuego(Juego juego) {
-		// TODO - implement GestorJuego.modificarJuego
-		throw new UnsupportedOperationException();
+	public void modificarJuego(Juego juego) {
+
 	}
 
 	public void ejecutarBuscarJuego() {
@@ -55,11 +52,10 @@ public class GestorJuego {
 
 	/**
 	 * 
-	 * @param juego
+	 * @param nombre
 	 */
-	public boolean buscarJuego(Juego juego) {
-		// TODO - implement GestorJuego.buscarJuego
-		throw new UnsupportedOperationException();
+	public Juego buscarJuego(String nombre) {
+
 	}
 
 	/**
@@ -87,6 +83,15 @@ public class GestorJuego {
 
 	public void menuJuego() {
 		// TODO - implement GestorJuego.menuJuego
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param nombre
+	 */
+	public boolean juegoUnico(String nombre) {
+		// TODO - implement GestorJuego.juegoUnico
 		throw new UnsupportedOperationException();
 	}
 

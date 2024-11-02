@@ -15,9 +15,8 @@ public class GestorPelicula {
 	 * 
 	 * @param pelicula
 	 */
-	public boolean agregarPelicula(Pelicula pelicula) {
-		// TODO - implement GestorPelicula.agregarPelicula
-		throw new UnsupportedOperationException();
+	public void agregarPelicula(Pelicula pelicula) {
+
 	}
 
 	public void ejecutarEliminarPelicula() {
@@ -29,9 +28,8 @@ public class GestorPelicula {
 	 * 
 	 * @param pelicula
 	 */
-	public boolean eliminarPelicula(Pelicula pelicula) {
-		// TODO - implement GestorPelicula.eliminarPelicula
-		throw new UnsupportedOperationException();
+	public void eliminarPelicula(Pelicula pelicula) {
+
 	}
 
 	public void ejecutarModificarPelicula() {
@@ -43,9 +41,8 @@ public class GestorPelicula {
 	 * 
 	 * @param pelicula
 	 */
-	public boolean modificarPelicula(Pelicula pelicula) {
-		// TODO - implement GestorPelicula.modificarPelicula
-		throw new UnsupportedOperationException();
+	public void modificarPelicula(Pelicula pelicula) {
+
 	}
 
 	public void ejecutarBuscarPelicula() {
@@ -55,11 +52,10 @@ public class GestorPelicula {
 
 	/**
 	 * 
-	 * @param pelicula
+	 * @param titulo
 	 */
-	public boolean buscarPelicula(Pelicula pelicula) {
-		// TODO - implement GestorPelicula.buscarPelicula
-		throw new UnsupportedOperationException();
+	public Pelicula buscarPelicula(String titulo) {
+
 	}
 
 	/**
@@ -87,6 +83,15 @@ public class GestorPelicula {
 
 	public void menuPelicula() {
 		// TODO - implement GestorPelicula.menuPelicula
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param titulo
+	 */
+	public boolean peliculaUnica(String titulo) {
+		// TODO - implement GestorPelicula.peliculaUnica
 		throw new UnsupportedOperationException();
 	}
 

@@ -15,9 +15,8 @@ public class GestorLibro {
 	 * 
 	 * @param libro
 	 */
-	public boolean agregarLibro(Libro libro) {
-		// TODO - implement GestorLibro.agregarLibro
-		throw new UnsupportedOperationException();
+	public void agregarLibro(Libro libro) {
+
 	}
 
 	public void ejecutarEliminarLibro() {
@@ -29,9 +28,8 @@ public class GestorLibro {
 	 * 
 	 * @param libro
 	 */
-	public boolean eliminarLibro(Libro libro) {
-		// TODO - implement GestorLibro.eliminarLibro
-		throw new UnsupportedOperationException();
+	public void eliminarLibro(Libro libro) {
+
 	}
 
 	public void ejecutarModificarLibro() {
@@ -43,9 +41,8 @@ public class GestorLibro {
 	 * 
 	 * @param libro
 	 */
-	public boolean modificarLibro(Libro libro) {
-		// TODO - implement GestorLibro.modificarLibro
-		throw new UnsupportedOperationException();
+	public void modificarLibro(Libro libro) {
+
 	}
 
 	public void ejecutarBuscarLibro() {
@@ -55,11 +52,10 @@ public class GestorLibro {
 
 	/**
 	 * 
-	 * @param libro
+	 * @param isbn
 	 */
-	public boolean buscarLibro(Libro libro) {
-		// TODO - implement GestorLibro.buscarLibro
-		throw new UnsupportedOperationException();
+	public Libro buscarLibro(int isbn) {
+
 	}
 
 	/**
@@ -87,6 +83,15 @@ public class GestorLibro {
 
 	public void menuLibro() {
 		// TODO - implement GestorLibro.menuLibro
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param isbn
+	 */
+	public boolean libroUnico(int isbn) {
+		// TODO - implement GestorLibro.libroUnico
 		throw new UnsupportedOperationException();
 	}
 

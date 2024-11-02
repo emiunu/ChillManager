@@ -15,9 +15,8 @@ public class GestorSerie {
 	 * 
 	 * @param serie
 	 */
-	public boolean agregarSerie(Serie serie) {
-		// TODO - implement GestorSerie.agregarSerie
-		throw new UnsupportedOperationException();
+	public void agregarSerie(Serie serie) {
+
 	}
 
 	public void ejecutarEliminarSerie() {
@@ -29,9 +28,8 @@ public class GestorSerie {
 	 * 
 	 * @param serie
 	 */
-	public boolean eliminarSerie(Serie serie) {
-		// TODO - implement GestorSerie.eliminarSerie
-		throw new UnsupportedOperationException();
+	public void eliminarSerie(Serie serie) {
+
 	}
 
 	public void ejecutarModificarSerie() {
@@ -43,9 +41,8 @@ public class GestorSerie {
 	 * 
 	 * @param serie
 	 */
-	public boolean modificarSerie(Serie serie) {
-		// TODO - implement GestorSerie.modificarSerie
-		throw new UnsupportedOperationException();
+	public void modificarSerie(Serie serie) {
+
 	}
 
 	public void ejecutarBuscarSerie() {
@@ -55,11 +52,10 @@ public class GestorSerie {
 
 	/**
 	 * 
-	 * @param serie
+	 * @param titulo
 	 */
-	public boolean buscarSerie(Serie serie) {
-		// TODO - implement GestorSerie.buscarSerie
-		throw new UnsupportedOperationException();
+	public Serie buscarSerie(String titulo) {
+
 	}
 
 	/**
@@ -87,6 +83,15 @@ public class GestorSerie {
 
 	public void menuSerie() {
 		// TODO - implement GestorSerie.menuSerie
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param titulo
+	 */
+	public boolean serieUnica(String titulo) {
+		// TODO - implement GestorSerie.serieUnica
 		throw new UnsupportedOperationException();
 	}
 
