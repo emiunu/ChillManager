@@ -58,7 +58,7 @@ public class GestorJuego {
 
 	// Esta si siento que esta bien, porque es mas de una linea
 
-	public void eliminarJuego(Juego juego) {
+	public void eliminarJuego(Juego juego) { // Hay una opcion de una linea
 		for (Juego juegosAgregados : juegos) {
 			if (juegosAgregados.getNombre().equals(juego.getNombre())) {
 				juegos.remove(juegosAgregados);
@@ -72,20 +72,34 @@ public class GestorJuego {
 		if (juegoUnico(nombreJuego)) {
 			System.out.println("El juego no existe.");
 		} else {
-			modificarJuego(nombreJuego);
+			modificarJuego(nombreJuego, nuevoTitulo(nombreJuego), utilidad().pedirIntPositivo("Ingrese el nuevo año de lanzamiento: "),
+					utilidad().pedirIntPositivo("Ingrese la nueva cantidad de DLCs: "), ingresarStatusJuego(),
+					utilidad().leerOpcionLimitada("Ingrese el nuevo rating del juego: ", 0, 10),
+					utilidad().pedirString("Ingrese un nuevo comentario: "));
 		}
 	}
 
-	public void modificarJuego(String nombre) {
+	public void modificarJuego(String nombre, String nuevoNombre, int nuevoFecha, int nuevoDlc, String nuevoStatus, int nuevoRating, String nuevoComentario) {
 		for (Juego juego : juegos) {
 			if (juego.getNombre().equals(nombre)) {
-				juego.setNombre(utilidad().pedirString("Ingrese el nuevo nombre del juego: "));
-				juego.setFecha(utilidad().pedirIntPositivo("Ingrese el nuevo año de lanzamiento: "));
-				juego.setDlc(utilidad().pedirIntPositivo("Ingrese la nueva cantidad de DLCs: "));
-				juego.setStatus(ingresarStatusJuego());
-				juego.setRating(utilidad().leerOpcionLimitada("Ingrese el nuevo rating del juego: ", 0, 10));
-				juego.setComentario(utilidad().pedirString("Ingrese un nuevo comentario: "));
+				juego.setNombre(nuevoNombre);
+				juego.setFecha(nuevoFecha);
+				juego.setDlc(nuevoDlc);
+				juego.setStatus(nuevoStatus);
+				juego.setRating(nuevoRating);
+				juego.setComentario(nuevoComentario);
 				break;
+			}
+		}
+	}
+
+	public String nuevoTitulo (String titulo) {
+		while (true) {
+			String nuevoTitulo = utilidad().pedirString("Ingrese el nuevo nombre del juego: ");
+			if (juegoUnico(nuevoTitulo) || nuevoTitulo.equals(titulo)) {
+				return nuevoTitulo;
+			} else {
+				System.out.println("El juego ya existe.");
 			}
 		}
 	}
