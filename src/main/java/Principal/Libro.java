@@ -10,14 +10,20 @@ public class Libro {
 	private int rating;
 	private String comentario;
 
+	public Libro(int isbn, String titulo, String autor, int anno, String status, int rating, String comentario) {
+		this.isbn = isbn;
+		this.titulo = titulo;
+		this.autor = autor;
+		this.anno = anno;
+		this.status = status;
+		this.rating = rating;
+		this.comentario = comentario;
+	}
+
 	public int getIsbn() {
 		return this.isbn;
 	}
 
-	/**
-	 * 
-	 * @param isbn
-	 */
 	public void setIsbn(int isbn) {
 		this.isbn = isbn;
 	}
@@ -26,10 +32,6 @@ public class Libro {
 		return this.titulo;
 	}
 
-	/**
-	 * 
-	 * @param titulo
-	 */
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
@@ -38,10 +40,6 @@ public class Libro {
 		return this.autor;
 	}
 
-	/**
-	 * 
-	 * @param autor
-	 */
 	public void setAutor(String autor) {
 		this.autor = autor;
 	}
@@ -50,10 +48,6 @@ public class Libro {
 		return this.anno;
 	}
 
-	/**
-	 * 
-	 * @param anno
-	 */
 	public void setAnno(int anno) {
 		this.anno = anno;
 	}
@@ -62,10 +56,6 @@ public class Libro {
 		return this.status;
 	}
 
-	/**
-	 * 
-	 * @param status
-	 */
 	public void setStatus(String status) {
 		this.status = status;
 	}
@@ -74,10 +64,6 @@ public class Libro {
 		return this.rating;
 	}
 
-	/**
-	 * 
-	 * @param rating
-	 */
 	public void setRating(int rating) {
 		this.rating = rating;
 	}
@@ -86,12 +72,12 @@ public class Libro {
 		return this.comentario;
 	}
 
-	/**
-	 * 
-	 * @param comentario
-	 */
 	public void setComentario(String comentario) {
 		this.comentario = comentario;
+	}
+
+	public String toString() {
+		return "『 Isbn: " + this.isbn +" | "+ "Titulo: " + this.titulo +" | "+ "Autor: " + this.autor +" | "+ "Año: " + this.anno  +" | "+ "Status: "+ this.status +" | " + "Rating: " + this.rating + " | " + "Comentario: " + this.comentario + "』";
 	}
 
 }
