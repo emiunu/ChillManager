@@ -74,12 +74,24 @@ public class GestorPelicula {
 	public void ejecutarModificarPelicula() {
 		String titulo = utilidad().pedirString("Ingrese el titulo de la película que quiere actualizar/modificar: ");
 		if (!peliculaUnica(titulo)){
-			modificarPelicula(titulo, utilidad().pedirString("Ingrese el nuevo titulo: "), utilidad().pedirIntPositivo("Ingrese el año: "), utilidad().pedirString("Ingrese el género: "), utilidad().pedirIntPositivo("Ingrese la duración: "), ingresarStatusPelicula(),utilidad().leerOpcionLimitada("Ingrese su rating (del 1 al 10; 1 = puntaje más bajo ; 10 = puntaje más alto): ", 1, 10), utilidad().pedirString("Ingrese comentario: "));
+			modificarPelicula(titulo, nuevoTitulo(titulo), utilidad().pedirIntPositivo("Ingrese el año: "), utilidad().pedirString("Ingrese el género: "), utilidad().pedirIntPositivo("Ingrese la duración: "), ingresarStatusPelicula(),utilidad().leerOpcionLimitada("Ingrese su rating (del 1 al 10; 1 = puntaje más bajo ; 10 = puntaje más alto): ", 1, 10), utilidad().pedirString("Ingrese comentario: "));
 			System.out.println("Actualización realizada correctamente.");
 		} else {
 			System.out.println("No se encontró la película.");
 
 		}
+	}
+
+	public String nuevoTitulo(String titulo){
+		String nuevoTitulo = "";
+		while (true){
+			nuevoTitulo = utilidad().pedirString("Ingrese el nuevo titulo: ");
+			if (peliculaUnica(nuevoTitulo) || nuevoTitulo.equals(titulo)){
+				break;
+			}
+			System.out.print("Titulo no valido. Intente nuevamente. ");
+		}
+		return nuevoTitulo;
 	}
 
 
