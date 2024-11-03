@@ -86,7 +86,7 @@ public class Serie {
 		this.comentario = comentario;
 	}
 
-	public String mostrarSerie() {
+	public String toString() {
 		return "『 Título: "+ this.titulo +" | Temporadas: "+ this.temporadas +" | Capítulos: "+ this.capitulos +" | Temporada Actual: "+ this.temporadaActual +" | Capítulo Actual (de temporada): "+ this.capituloActual +" | Estado: "+ this.status +" | Rating: "+ this.rating +" | Comentarios: "+ this.comentario +" 』";
 	}
 
