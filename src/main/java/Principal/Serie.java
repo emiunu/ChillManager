@@ -11,14 +11,21 @@ public class Serie {
 	private int rating;
 	private String comentario;
 
+	public Serie(String titulo, int temporadas, int capitulos, int temporadaActual, int capituloActual, String status, int rating, String comentario){
+		this.titulo = titulo;
+		this.temporadas = temporadas;
+		this.capitulos = capitulos;
+		this.temporadaActual = temporadaActual;
+		this.capituloActual = capituloActual;
+		this.status = status;
+		this.rating = rating;
+		this.comentario = comentario;
+	}
+
 	public String getTitulo() {
 		return this.titulo;
 	}
 
-	/**
-	 * 
-	 * @param titulo
-	 */
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
@@ -27,10 +34,6 @@ public class Serie {
 		return this.temporadas;
 	}
 
-	/**
-	 * 
-	 * @param temporadas
-	 */
 	public void setTemporadas(int temporadas) {
 		this.temporadas = temporadas;
 	}
@@ -39,10 +42,6 @@ public class Serie {
 		return this.capitulos;
 	}
 
-	/**
-	 * 
-	 * @param capitulos
-	 */
 	public void setCapitulos(int capitulos) {
 		this.capitulos = capitulos;
 	}
@@ -51,10 +50,6 @@ public class Serie {
 		return this.temporadaActual;
 	}
 
-	/**
-	 * 
-	 * @param temporadaActual
-	 */
 	public void setTemporadaActual(int temporadaActual) {
 		this.temporadaActual = temporadaActual;
 	}
@@ -63,10 +58,6 @@ public class Serie {
 		return this.capituloActual;
 	}
 
-	/**
-	 * 
-	 * @param capituloActual
-	 */
 	public void setCapituloActual(int capituloActual) {
 		this.capituloActual = capituloActual;
 	}
@@ -75,10 +66,6 @@ public class Serie {
 		return this.status;
 	}
 
-	/**
-	 * 
-	 * @param status
-	 */
 	public void setStatus(String status) {
 		this.status = status;
 	}
@@ -87,10 +74,6 @@ public class Serie {
 		return this.rating;
 	}
 
-	/**
-	 * 
-	 * @param rating
-	 */
 	public void setRating(int rating) {
 		this.rating = rating;
 	}
@@ -99,12 +82,12 @@ public class Serie {
 		return this.comentario;
 	}
 
-	/**
-	 * 
-	 * @param comentario
-	 */
 	public void setComentario(String comentario) {
 		this.comentario = comentario;
+	}
+
+	public String mostrarSerie() {
+		return "『 Título: "+ this.titulo +" | Temporadas: "+ this.temporadas +" | Capítulos: "+ this.capitulos +" | Temporada Actual: "+ this.temporadaActual +" | Capítulo Actual (de temporada): "+ this.capituloActual +" | Estado: "+ this.status +" | Rating: "+ this.rating +" | Comentarios: "+ this.comentario +" 』";
 	}
 
 }
