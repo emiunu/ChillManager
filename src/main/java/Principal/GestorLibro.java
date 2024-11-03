@@ -10,7 +10,7 @@ public class GestorLibro {
 	private List<Libro> libros;
 
 	public GestorLibro() {
-		libros = new ArrayList<Libro>();
+		libros = new ArrayList<>();
 	}
 
 	public static void main(String[] args) {
@@ -123,12 +123,13 @@ public class GestorLibro {
 		return status;
 	}
 
-	//probar como lo hizo el martin a ver si funciona automaticamente el to string
 	public void mostrarTodos() {
-		System.out.println("Lista de Libros: ");
+		System.out.println("LISTA DE LIBROS");
+		System.out.println("===================================");
 		for (Libro libro : libros) {
 			System.out.println(libro.toString());
 		}
+		System.out.println("FIN DEL LISTADO.");
 	}
 
 	public void ejecutarOpcionLibro(int opcion) {
