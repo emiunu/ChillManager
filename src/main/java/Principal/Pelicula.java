@@ -94,4 +94,13 @@ public class Pelicula {
 		this.comentario = comentario;
 	}
 
+	public Pelicula(String titulo, int anno, String genero, int duracion, String status, int rating, String comentario) {
+		this.titulo = titulo;
+		this.anno = anno;
+		this.genero = genero;
+		this.duracion = duracion;
+		this.status = status;
+		this.rating = rating;
+		this.comentario = comentario;
+	}
 }
