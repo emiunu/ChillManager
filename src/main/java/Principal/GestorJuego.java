@@ -129,31 +129,25 @@ public class GestorJuego {
 	}
 
 	public void mostrarTodos() {
+		System.out.println("LISTA DE JUEGOS");
+		System.out.println("===================================");
 		for (Juego juego : juegos) {
 			System.out.println(juego);
 		}
+		System.out.println("===================================");
+		System.out.println("FIN DEL LISTADO");
 	}
 
 	public void ejecutarOpcionJuego(int opcion) {
-		switch (opcion) {
-			case 1:
-				ejecutarAgregarJuego();
-				break;
-			case 2:
-				ejecutarBuscarJuego();
-				break;
-			case 3:
-				ejecutarModificarJuego();
-				break;
-			case 4:
-				ejecutarEliminarJuego();
-				break;
-			case 5:
-				mostrarTodos();
-				break;
-			case 6:
-				break;
-		}
+        switch (opcion) {
+            case 1 -> ejecutarAgregarJuego();
+            case 2 -> ejecutarBuscarJuego();
+            case 3 -> ejecutarModificarJuego();
+            case 4 -> ejecutarEliminarJuego();
+            case 5 -> mostrarTodos();
+            case 6 -> {
+            }
+        }
 	}
 
 	public void mostrarOpcionesJuegos() {
@@ -167,14 +161,11 @@ public class GestorJuego {
 	}
 
 	public void menuJuego() {
-		while (true) {
-			mostrarOpcionesJuegos();
-			int opcion = utilidad().leerOpcionLimitada("Ingrese una opción: ", 1, 6);
-			ejecutarOpcionJuego(opcion);
-			if (utilidad().leerOpcionLimitada("¿Desea realizar otra operación? (1. Sí / 2. No): ", 1, 2) == 2) {
-				break;
-			}
-		}
+        do {
+            mostrarOpcionesJuegos();
+            int opcion = utilidad().leerOpcionLimitada("Ingrese una opción: ", 1, 6);
+            ejecutarOpcionJuego(opcion);
+        } while (utilidad().leerOpcionLimitada("¿Desea realizar otra operación? (1. Sí / 2. No): ", 1, 2) != 2);
 	}
 
 	public boolean juegoUnico(String nombre) {
