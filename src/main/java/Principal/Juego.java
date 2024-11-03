@@ -9,14 +9,19 @@ public class Juego {
 	private int rating;
 	private String comentario;
 
+	public Juego(String nombre, int fecha, int dlc, String status, int rating, String comentario) {
+		this.nombre = nombre;
+		this.fecha = fecha;
+		this.dlc = dlc;
+		this.status = status;
+		this.rating = rating;
+		this.comentario = comentario;
+	}
+
 	public String getNombre() {
 		return this.nombre;
 	}
 
-	/**
-	 * 
-	 * @param nombre
-	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
@@ -25,10 +30,6 @@ public class Juego {
 		return this.fecha;
 	}
 
-	/**
-	 * 
-	 * @param fecha
-	 */
 	public void setFecha(int fecha) {
 		this.fecha = fecha;
 	}
@@ -37,10 +38,6 @@ public class Juego {
 		return this.dlc;
 	}
 
-	/**
-	 * 
-	 * @param dlc
-	 */
 	public void setDlc(int dlc) {
 		this.dlc = dlc;
 	}
@@ -49,10 +46,6 @@ public class Juego {
 		return this.status;
 	}
 
-	/**
-	 * 
-	 * @param status
-	 */
 	public void setStatus(String status) {
 		this.status = status;
 	}
@@ -60,11 +53,7 @@ public class Juego {
 	public int getRating() {
 		return this.rating;
 	}
-
-	/**
-	 * 
-	 * @param rating
-	 */
+	
 	public void setRating(int rating) {
 		this.rating = rating;
 	}
@@ -73,12 +62,12 @@ public class Juego {
 		return this.comentario;
 	}
 
-	/**
-	 * 
-	 * @param comentario
-	 */
 	public void setComentario(String comentario) {
 		this.comentario = comentario;
+	}
+
+	public String toString() {
+		return "『 Nombre: " + this.nombre +" | "+ "Fecha de lanzamiento: " + this.fecha +" | "+ "DLC: " + this.dlc +" | "+ "Estado: " + this.status + " | " + "Rating: " + this.rating + " | " + "Comentario: " + this.comentario + "』";
 	}
 
 }
