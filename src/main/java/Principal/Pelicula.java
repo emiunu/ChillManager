@@ -94,6 +94,11 @@ public class Pelicula {
 		this.comentario = comentario;
 	}
 
+	@Override
+	public String toString() {
+		return "『 Título: "+ titulo +" | Año: "+ anno +" | Género: "+ genero +" | Duracion: "+ duracion +" | Estado: "+ status +" | Rating: "+ rating + " | Comentarios: "+ comentario +" 』";
+	}
+
 	public Pelicula(String titulo, int anno, String genero, int duracion, String status, int rating, String comentario) {
 		this.titulo = titulo;
 		this.anno = anno;
@@ -103,4 +108,5 @@ public class Pelicula {
 		this.rating = rating;
 		this.comentario = comentario;
 	}
+
 }

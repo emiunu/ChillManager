@@ -134,13 +134,16 @@ public class GestorPelicula {
 
 
 	public void mostrarPelicula(Pelicula pelicula) {
-		System.out.println("『 Título: "+ pelicula.getTitulo() +" | Año: "+ pelicula.getAnno() +" | Género: "+ pelicula.getGenero() +" | Duracion: "+ pelicula.getDuracion() +" | Estado: "+ pelicula.getStatus() +" | Rating: "+ pelicula.getRating() + " | Comentarios: "+ pelicula.getComentario() +" 』");
+		System.out.println(pelicula.toString());
 	}
 
 	public void mostrarTodos() {
+		System.out.println("LISTA DE PELÍCULAS");
+		System.out.println("===================================");
 		for (Pelicula pelicula : peliculas){
 			mostrarPelicula(pelicula);
 		}
+		System.out.println("FIN DEL LISTADO.");
 	}
 
 
@@ -191,5 +194,4 @@ public class GestorPelicula {
 		}
 		return true;
 	}
-
 }
