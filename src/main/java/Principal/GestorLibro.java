@@ -64,7 +64,7 @@ public class GestorLibro {
 	public void ejecutarModificarLibro() {
 		int isbnLibro = utilidad().pedirIntPositivo("Ingrese el isbn del libro que desea modificar: ");
 		if (buscarLibroIsbn(isbnLibro) != null) {
-			modificarLibro(utilidad().pedirInt("Ingrese el nuevo isbn del libro: "),
+			modificarLibro(isbnLibro,
 					utilidad().pedirString("Ingrese el nuevo titulo: "),
 					utilidad().pedirString("Ingrese el nuevo autor: "),
 					utilidad().pedirInt("Ingrese en nuevo año de lanzamiento: "),
