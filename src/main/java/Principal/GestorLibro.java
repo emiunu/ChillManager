@@ -86,7 +86,6 @@ public class GestorLibro {
 				break;
 			}
 		}
-
 	}
 
 	public void ejecutarBuscarLibro() {

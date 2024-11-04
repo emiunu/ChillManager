@@ -61,7 +61,6 @@ public class GestorPelicula {
 			System.out.println("No se encontró la película");
 
 		}
-
 	}
 
 
