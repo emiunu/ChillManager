@@ -145,6 +145,7 @@ public class GestorLibro {
 				mostrarTodos();
 				break;
 			case 6:
+				System.out.println("Volviendo al menú general...");
 				break;
 		}
 	}
