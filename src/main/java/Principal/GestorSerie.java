@@ -131,7 +131,7 @@ public class GestorSerie {
 		System.out.println(serie.toString());
 	}
 
-	public void mostrarTodos() {
+	public void mostrarTodasSeries() {
 		System.out.println("LISTA DE SERIES");
 		System.out.println("===================================");
 		for (Serie serieEnLista : this.series) {
@@ -160,7 +160,7 @@ public class GestorSerie {
 		} else if (opcion == 4) { //eliminar serie.
 			ejecutarEliminarSerie();
 		} else if (opcion == 5) { //ver todas las series.
-			mostrarTodos();
+			mostrarTodasSeries();
 		} else if (opcion == 6) { //volver al menú.
 			System.out.println("Volviendo al menú general...");
 		}
