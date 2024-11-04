@@ -5,7 +5,7 @@ import Utilidades.Utilidad;
 
 public class GestorJuego {
 
-	private List<Juego> juegos;
+	private ArrayList<Juego> juegos;
 
 	public Utilidad utilidad() {
 		return new Utilidad();
@@ -40,8 +40,6 @@ public class GestorJuego {
 		}
 	}
 
-	// siento que es innecesaria esta funcion, ya que es solo una linea.
-
 	public void agregarJuego(Juego juegoAAgregar) {
 		juegos.add(juegoAAgregar);
 	}
@@ -55,8 +53,6 @@ public class GestorJuego {
 			System.out.println("Juego eliminado.");
 		}
 	}
-
-	// Esta si siento que esta bien, porque es mas de una linea
 
 	public void eliminarJuego(Juego juego) { // Hay una opcion de una linea
 		for (Juego juegosAgregados : juegos) {
@@ -112,8 +108,6 @@ public class GestorJuego {
 			mostrarJuego(buscarJuego(nombreJuego));
 		}
 	}
-
-	// Esta funcion siento que igualmente es innecesaria, por lo menos como tengo definido el ToString.
 
 	public void mostrarJuego(Juego juego) {
 		System.out.println(juego);
@@ -181,17 +175,12 @@ public class GestorJuego {
 		juegos = new ArrayList<Juego>();
 	}
 
-	public List<Juego> getJuegos() {
+	public ArrayList<Juego> getJuegos() {
 		return juegos;
 	}
 
-	public void setJuegos(List<Juego> juegos) {
+	public void setJuegos(ArrayList<Juego> juegos) {
 		this.juegos = juegos;
-	}
-
-	public static void main(String[] args) {
-		GestorJuego gestorJuego = new GestorJuego();
-		gestorJuego.menuJuego();
 	}
 
 }
