@@ -15,20 +15,19 @@ class GestorSerieTest {
     Serie serie2 = new Serie("Serie2",1,1,1,1,"Sin empezar",10,"Comentario2");
     Serie serie3 = new Serie("SerieModificada",1,1,1,1,"Sin empezar",10,"Comentario3");
     ArrayList<Serie> seriesLista = new ArrayList<>(Arrays.asList());
-    GestorSerie gestorSerie = new GestorSerie(seriesLista);
+    GestorSerie gestorSerie = new GestorSerie();
 
     @BeforeEach
     void setUp() {
         System.out.println("Preparando un nuevo test...");
-        seriesLista = new ArrayList<>(Arrays.asList(serie1));
-        gestorSerie = new GestorSerie(seriesLista);
+        gestorSerie = new GestorSerie();
     }
 
     @AfterEach
     void tearDown() {
         System.out.println("Finalizando un test...");
         seriesLista = new ArrayList<>(Arrays.asList());
-        gestorSerie = new GestorSerie(seriesLista);
+        gestorSerie = new GestorSerie();
     }
 
     @Test
@@ -45,8 +44,9 @@ class GestorSerieTest {
 
     @Test
     void serieUnica() {
-        assertFalse(gestorSerie.serieUnica(serie1.getTitulo()));
-        assertTrue(gestorSerie.serieUnica(serie2.getTitulo()));
+        gestorSerie.agregarSerie(serie1);
+        assertFalse(gestorSerie.serieUnica("Serie1"));
+        assertTrue(gestorSerie.serieUnica("Serie2"));
     }
 
     @Test
@@ -60,14 +60,16 @@ class GestorSerieTest {
 
     @Test
     void buscarSerie() {
-        assertEquals(gestorSerie.buscarSerie(serie1.getTitulo()),serie1);
+        gestorSerie.agregarSerie(serie1);
+        assertEquals(gestorSerie.buscarSerie("Serie1"),serie1);
     }
 
     @Test
     void modificarSerie() {
         System.out.println("Antes de modificar.");
+        gestorSerie.agregarSerie(serie1);
         gestorSerie.mostrarTodasSeries();
-        gestorSerie.modificarSerie(serie1.getTitulo(),serie3);
+        gestorSerie.modificarSerie("Serie1",serie3);
         gestorSerie.mostrarTodasSeries();
         System.out.println("Después de modificar.");
     }
@@ -75,6 +77,7 @@ class GestorSerieTest {
     @Test
     void eliminarSerie() {
         System.out.println("Antes de eliminar.");
+        gestorSerie.agregarSerie(serie1);
         gestorSerie.mostrarTodasSeries();
         gestorSerie.eliminarSerie(serie1);
         gestorSerie.mostrarTodasSeries();

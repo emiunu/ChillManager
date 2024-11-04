@@ -7,8 +7,8 @@ public class GestorSerie {
 
 	private ArrayList<Serie> series;
 
-	public GestorSerie(ArrayList<Serie> series){
-		this.series = series;
+	public GestorSerie(){
+		this.series = new ArrayList<>();
 	}
 
 	public Utilidad utilidad(){
