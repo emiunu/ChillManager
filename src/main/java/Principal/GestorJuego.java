@@ -139,8 +139,7 @@ public class GestorJuego {
             case 3 -> ejecutarModificarJuego();
             case 4 -> ejecutarEliminarJuego();
             case 5 -> mostrarTodos();
-            case 6 -> {
-            }
+            case 6 -> System.out.println("Volviendo al menú general...");
         }
 	}
 
@@ -155,11 +154,14 @@ public class GestorJuego {
 	}
 
 	public void menuJuego() {
-        do {
-            mostrarOpcionesJuegos();
-            int opcion = utilidad().leerOpcionLimitada("Ingrese una opción: ", 1, 6);
-            ejecutarOpcionJuego(opcion);
-        } while (utilidad().leerOpcionLimitada("¿Desea realizar otra operación? (1. Sí / 2. No): ", 1, 2) != 2);
+		while (true) {
+			mostrarOpcionesJuegos();
+			int opcion = utilidad().leerOpcionLimitada("Ingrese el número de la opción que desea seleccionar: ", 1, 6);
+			ejecutarOpcionJuego(opcion);
+			if (opcion == 6) {
+				break;
+			}
+		}
 	}
 
 	public boolean juegoUnico(String nombre) {
