@@ -1,98 +1,186 @@
 package Principal;
-
 import java.util.*;
+
+import Utilidades.Utilidad;
 
 public class GestorJuego {
 
-	private List<Juego> juegos;
+	private ArrayList<Juego> juegos;
 
-	public void ejecutarAgregarJuego() {
-		// TODO - implement GestorJuego.ejecutarAgregarJuego
-		throw new UnsupportedOperationException();
+	public Utilidad utilidad() {
+		return new Utilidad();
 	}
 
-	/**
-	 * 
-	 * @param juego
-	 */
-	public void agregarJuego(Juego juego) {
+	public void opcionesStatusJuego() {
+		System.out.println("Status de Videojuego:");
+		System.out.println("1. Sin jugar.");
+		System.out.println("2. Jugando.");
+		System.out.println("3. Completado.");
+	}
 
+	public String ingresarStatusJuego() {
+		String status = "";
+		opcionesStatusJuego();
+		int opcion = utilidad().leerOpcionLimitada("Ingrese el número correspondiente al status del juego: ", 1, 3);
+        status = switch (opcion) {
+            case 1 -> "Sin jugar";
+            case 2 -> "Jugando";
+            case 3 -> "Completado";
+            default -> status;
+        };
+		return status;
+	}
+
+	public void ejecutarAgregarJuego() {
+		String nombreJuego = utilidad().pedirString("Ingrese el nombre del juego: ");
+		if (!juegoUnico(nombreJuego)) {
+			System.out.println("El juego ya existe.");
+		} else {
+			agregarJuego(new Juego(nombreJuego, utilidad().pedirIntPositivo("Ingrese el año de lanzamiento: "), utilidad().pedirIntPositivo("Ingrese la cantidad de DLCs: "), ingresarStatusJuego(), utilidad().leerOpcionLimitada("Ingrese el rating del juego: ", 0, 10), utilidad().pedirString("Ingrese un comentario: ")));
+		}
+	}
+
+	public void agregarJuego(Juego juegoAAgregar) {
+		juegos.add(juegoAAgregar);
 	}
 
 	public void ejecutarEliminarJuego() {
-		// TODO - implement GestorJuego.ejecutarEliminarJuego
-		throw new UnsupportedOperationException();
+		String nombreJuego = utilidad().pedirString("Ingrese el nombre del juego a eliminar: ");
+		if (juegoUnico(nombreJuego)) {
+			System.out.println("El juego no existe.");
+		} else {
+			eliminarJuego(buscarJuego(nombreJuego));
+			System.out.println("Juego eliminado.");
+		}
 	}
 
-	/**
-	 * 
-	 * @param juego
-	 */
-	public void eliminarJuego(Juego juego) {
-
+	public void eliminarJuego(Juego juego) { // Hay una opcion de una linea
+		for (Juego juegosAgregados : juegos) {
+			if (juegosAgregados.getNombre().equals(juego.getNombre())) {
+				juegos.remove(juegosAgregados);
+				break;
+			}
+		}
 	}
 
 	public void ejecutarModificarJuego() {
-		// TODO - implement GestorJuego.ejecutarModificarJuego
-		throw new UnsupportedOperationException();
+		String nombreJuego = utilidad().pedirString("Ingrese el nombre del juego a modificar: ");
+		if (juegoUnico(nombreJuego)) {
+			System.out.println("El juego no existe.");
+		} else {
+			modificarJuego(nombreJuego, nuevoTitulo(nombreJuego), utilidad().pedirIntPositivo("Ingrese el nuevo año de lanzamiento: "),
+					utilidad().pedirIntPositivo("Ingrese la nueva cantidad de DLCs: "), ingresarStatusJuego(),
+					utilidad().leerOpcionLimitada("Ingrese el nuevo rating del juego: ", 0, 10),
+					utilidad().pedirString("Ingrese un nuevo comentario: "));
+		}
 	}
 
-	/**
-	 * 
-	 * @param juego
-	 */
-	public void modificarJuego(Juego juego) {
+	public void modificarJuego(String nombre, String nuevoNombre, int nuevoFecha, int nuevoDlc, String nuevoStatus, int nuevoRating, String nuevoComentario) {
+		for (Juego juego : juegos) {
+			if (juego.getNombre().equals(nombre)) {
+				juego.setNombre(nuevoNombre);
+				juego.setFecha(nuevoFecha);
+				juego.setDlc(nuevoDlc);
+				juego.setStatus(nuevoStatus);
+				juego.setRating(nuevoRating);
+				juego.setComentario(nuevoComentario);
+				break;
+			}
+		}
+	}
 
+	public String nuevoTitulo (String titulo) {
+		while (true) {
+			String nuevoTitulo = utilidad().pedirString("Ingrese el nuevo nombre del juego: ");
+			if (juegoUnico(nuevoTitulo) || nuevoTitulo.equals(titulo)) {
+				return nuevoTitulo;
+			} else {
+				System.out.println("El juego ya existe.");
+			}
+		}
 	}
 
 	public void ejecutarBuscarJuego() {
-		// TODO - implement GestorJuego.ejecutarBuscarJuego
-		throw new UnsupportedOperationException();
+		String nombreJuego = utilidad().pedirString("Ingrese el nombre del juego a buscar: ");
+		if (juegoUnico(nombreJuego)) {
+			System.out.println("El juego no existe.");
+		} else {
+			mostrarJuego(buscarJuego(nombreJuego));
+		}
 	}
 
-	/**
-	 * 
-	 * @param nombre
-	 */
-	public Juego buscarJuego(String nombre) {
-
-	}
-
-	/**
-	 * 
-	 * @param juego
-	 */
 	public void mostrarJuego(Juego juego) {
-		// TODO - implement GestorJuego.mostrarJuego
-		throw new UnsupportedOperationException();
+		System.out.println(juego);
+	}
+
+	public Juego buscarJuego(String nombre) {
+		for (Juego juego : juegos) {
+			if (juego.getNombre().equals(nombre)) {
+				return juego;
+			}
+		}
+		return null;
 	}
 
 	public void mostrarTodos() {
-		// TODO - implement GestorJuego.mostrarTodos
-		throw new UnsupportedOperationException();
+		System.out.println("LISTA DE JUEGOS");
+		System.out.println("===================================");
+		for (Juego juego : juegos) {
+			System.out.println(juego);
+		}
+		System.out.println("===================================");
+		System.out.println("FIN DEL LISTADO");
 	}
 
-	/**
-	 * 
-	 * @param opcion
-	 */
 	public void ejecutarOpcionJuego(int opcion) {
-		// TODO - implement GestorJuego.ejecutarOpcionJuego
-		throw new UnsupportedOperationException();
+        switch (opcion) {
+            case 1 -> ejecutarAgregarJuego();
+            case 2 -> ejecutarBuscarJuego();
+            case 3 -> ejecutarModificarJuego();
+            case 4 -> ejecutarEliminarJuego();
+            case 5 -> mostrarTodos();
+            case 6 -> {
+            }
+        }
+	}
+
+	public void mostrarOpcionesJuegos() {
+		System.out.println("\nMenú de Juegos:");
+		System.out.println("1) Agregar juego.");
+		System.out.println("2) Buscar juego.");
+		System.out.println("3) Actualizar/modificar juego.");
+		System.out.println("4) Eliminar juego.");
+		System.out.println("5) Ver todos los juegos.");
+		System.out.println("6) Volver.");
 	}
 
 	public void menuJuego() {
-		// TODO - implement GestorJuego.menuJuego
-		throw new UnsupportedOperationException();
+        do {
+            mostrarOpcionesJuegos();
+            int opcion = utilidad().leerOpcionLimitada("Ingrese una opción: ", 1, 6);
+            ejecutarOpcionJuego(opcion);
+        } while (utilidad().leerOpcionLimitada("¿Desea realizar otra operación? (1. Sí / 2. No): ", 1, 2) != 2);
 	}
 
-	/**
-	 * 
-	 * @param nombre
-	 */
 	public boolean juegoUnico(String nombre) {
-		// TODO - implement GestorJuego.juegoUnico
-		throw new UnsupportedOperationException();
+		for (Juego juego : juegos) {
+			if (juego.getNombre().equals(nombre)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public GestorJuego() {
+		juegos = new ArrayList<Juego>();
+	}
+
+	public ArrayList<Juego> getJuegos() {
+		return juegos;
+	}
+
+	public void setJuegos(ArrayList<Juego> juegos) {
+		this.juegos = juegos;
 	}
 
 }
