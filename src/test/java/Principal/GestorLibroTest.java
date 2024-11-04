@@ -55,7 +55,7 @@ class GestorLibroTest {
     void modificarLibro() {
         gestorLibro.modificarLibro(1, "El camino", "Brandon", 2024, "Sin leer", 0, " ");
         assertEquals("El camino", gestorLibro.buscarLibroIsbn(1).getTitulo());
-        assertEquals("Brandon", gestorLibro.buscarLibroIsbn(1).getTitulo());
+        assertEquals("Brandon", gestorLibro.buscarLibroIsbn(1).getAutor());
         assertEquals(2024, gestorLibro.buscarLibroIsbn(1).getAnno());
         assertEquals("Sin leer", gestorLibro.buscarLibroIsbn(1).getStatus());
         assertEquals(0, gestorLibro.buscarLibroIsbn(1).getRating());
