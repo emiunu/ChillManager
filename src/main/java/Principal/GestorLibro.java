@@ -13,10 +13,6 @@ public class GestorLibro {
 		this.libros = new ArrayList<>();
 	}
 
-	public static void main(String[] args) {
-		GestorLibro g = new GestorLibro();
-	}
-
 	public Utilidad utilidad(){
 		return new Utilidad();
 	}
