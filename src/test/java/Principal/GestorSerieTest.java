@@ -4,9 +4,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class GestorSerieTest {
@@ -14,7 +11,6 @@ class GestorSerieTest {
     Serie serie1 = new Serie("Serie1",1,1,1,1,"Sin empezar",10,"Comentario1");
     Serie serie2 = new Serie("Serie2",1,1,1,1,"Sin empezar",10,"Comentario2");
     Serie serie3 = new Serie("SerieModificada",1,1,1,1,"Sin empezar",10,"Comentario3");
-    ArrayList<Serie> seriesLista = new ArrayList<>(Arrays.asList());
     GestorSerie gestorSerie = new GestorSerie();
 
     @BeforeEach
@@ -26,7 +22,6 @@ class GestorSerieTest {
     @AfterEach
     void tearDown() {
         System.out.println("Finalizando un test...");
-        seriesLista = new ArrayList<>(Arrays.asList());
         gestorSerie = new GestorSerie();
     }
 
