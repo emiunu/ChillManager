@@ -22,7 +22,7 @@ public class GestorPrincipal {
 
 	public void menuGeneral() {
 		while(true) {
-			mostrarMenus();
+			mostrarOpcionesGeneral();
 			int opcion = utilidad().leerOpcionLimitada("Ingrese una opción: ", 1, 5);
 			if (opcion == 5) {
 				break;
@@ -42,7 +42,7 @@ public class GestorPrincipal {
         }
 	}
 
-	public void mostrarMenus() {
+	public void mostrarOpcionesGeneral() {
 		System.out.println("\nCHILL MANAGER");
 		System.out.println("¿Qué deseas explorar?");
 		System.out.println("1) Juegos.");
