@@ -82,11 +82,23 @@ public class GestorSerie {
 		return null;
 	}
 
+	//Compara el título original con el nuevo título para evitar que se registre una serie ya existente.
+	public String nuevoTitulo(String titulo) {
+		while (true) {
+			String nuevoTitulo = utilidad().pedirString("Ingrese el nuevo título de la serie: ");
+			if (serieUnica(nuevoTitulo) || nuevoTitulo.equals(titulo)) {
+				return nuevoTitulo;
+			} else {
+				System.out.println("La serie ya existe.");
+			}
+		}
+	}
+
 	public void ejecutarModificarSerie() {
 		String titulo = utilidad().pedirString("Ingrese el título de la serie que quiere actualizar/modificar: ");
 		if (!serieUnica(titulo)) { //si se encuentra la serie.
 			System.out.println("Serie encontrada. A continuación se le pedirán los nuevos datos.");
-			Serie nuevosDatos = new Serie(titulo,
+			Serie nuevosDatos = new Serie(nuevoTitulo(titulo),
 					utilidad().pedirIntPositivo("Ingrese las temporadas totales: "),
 					utilidad().pedirIntPositivo("Ingrese los capítulos totales: "),
 					utilidad().pedirIntPositivo("Ingrese la temporada actual que está viendo: "),
