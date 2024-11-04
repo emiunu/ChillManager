@@ -105,19 +105,6 @@ public class GestorLibro {
 		return null;
 	}
 
-	//Transformar en int del status a un string.
-	public String transformarStatusLibro(int opcion){
-		String status = "";
-		if (opcion == 1){
-			status = "Sin leer";
-		} else if (opcion == 2){
-			status = "Leyendo";
-		} else if (opcion == 3){
-			status = "Terminado";
-		}
-		return status;
-	}
-
 	public void mostrarTodos() {
 		System.out.println("LISTA DE LIBROS");
 		System.out.println("===================================");
