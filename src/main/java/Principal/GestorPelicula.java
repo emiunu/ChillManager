@@ -6,7 +6,7 @@ import java.util.*;
 
 public class GestorPelicula {
 
-	private List<Pelicula> peliculas;
+	private ArrayList<Pelicula> peliculas;
 
 	public GestorPelicula() {
 		this.peliculas = new ArrayList<>();
