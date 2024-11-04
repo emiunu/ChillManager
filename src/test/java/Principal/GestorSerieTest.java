@@ -27,14 +27,14 @@ class GestorSerieTest {
 
     @Test
     void transformarStatusSerie() {
-        assertEquals(gestorSerie.transformarStatusSerie(1),"Sin empezar");
-        assertEquals(gestorSerie.transformarStatusSerie(2),"Viendo");
-        assertEquals(gestorSerie.transformarStatusSerie(3),"Terminada");
+        assertEquals("Sin empezar", gestorSerie.transformarStatusSerie(1));
+        assertEquals("Viendo", gestorSerie.transformarStatusSerie(2));
+        assertEquals("Terminada", gestorSerie.transformarStatusSerie(3));
     }
 
     @Test
     void minusSinEspacios() {
-        assertEquals(gestorSerie.minusSinEspacios("A b C d"),"abcd");
+        assertEquals("abcd", gestorSerie.minusSinEspacios("A b C d"));
     }
 
     @Test
@@ -56,7 +56,7 @@ class GestorSerieTest {
     @Test
     void buscarSerie() {
         gestorSerie.agregarSerie(serie1);
-        assertEquals(gestorSerie.buscarSerie("Serie1"),serie1);
+        assertEquals(serie1, gestorSerie.buscarSerie("Serie1"));
     }
 
     @Test
