@@ -1,5 +1,7 @@
 package Principal;
 
+import Utilidades.Utilidad;
+
 public class GestorPrincipal {
 
 	private GestorSerie gestorSerie;
@@ -7,10 +9,21 @@ public class GestorPrincipal {
 	private GestorPelicula gestorPelicula;
 	private GestorJuego gestorJuego;
 
+	public GestorPrincipal() {
+		this.gestorSerie = new GestorSerie();
+		this.gestorLibro = new GestorLibro();
+		this.gestorPelicula = new GestorPelicula();
+		this.gestorJuego = new GestorJuego();
+	}
+
+	public Utilidad utilidad() {
+		return new Utilidad();
+	}
+
 	public void menuGeneral() {
 		while(true) {
 			mostrarMenus();
-			int opcion = gestorSerie.utilidad().leerOpcionLimitada("Ingrese una opción: ", 1, 5);
+			int opcion = utilidad().leerOpcionLimitada("Ingrese una opción: ", 1, 5);
 			if (opcion == 5) {
 				break;
 			}
@@ -41,10 +54,6 @@ public class GestorPrincipal {
 
 	public static void main(String[] args) {
 		GestorPrincipal gestorPrincipal = new GestorPrincipal();
-		gestorPrincipal.gestorSerie = new GestorSerie();
-		gestorPrincipal.gestorLibro = new GestorLibro();
-		gestorPrincipal.gestorPelicula = new GestorPelicula();
-		gestorPrincipal.gestorJuego = new GestorJuego();
 		gestorPrincipal.menuGeneral();
 	}
 
