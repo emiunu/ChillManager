@@ -7,15 +7,14 @@ import java.util.*;
 
 public class GestorLibro {
 
-	private List<Libro> libros;
+	private ArrayList<Libro> libros;
 
 	public GestorLibro() {
-		libros = new ArrayList<>();
+		this.libros = new ArrayList<>();
 	}
 
 	public static void main(String[] args) {
-		GestorJuego gestorJuego = new GestorJuego();
-		gestorJuego.menuJuego();
+		GestorLibro g = new GestorLibro();
 	}
 
 	public Utilidad utilidad(){
@@ -32,7 +31,7 @@ public class GestorLibro {
 	public String ingresarStatusLibro(){
 		String status = "";
 		opcionesStatusLibro();
-		int opcion = utilidad().leerOpcionLimitada("Ingrese el numero correspondiente al status del libro: ", 1, 3);
+		int opcion = utilidad().leerOpcionLimitada("Ingrese el numero correspondiente al estado del libro: ", 1, 3);
 		status = switch (opcion){
 			case 1 -> "Sin leer";
 			case 2 -> "Leyendo";
