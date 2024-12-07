@@ -7,11 +7,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class GestorDatos {
 
-    public GestorDatos() {}
+    private static final ObjectMapper mapper = new ObjectMapper();
 
-    private final ObjectMapper mapper = new ObjectMapper();
-
-    public <T> ArrayList<T> leerJson(String ubicacionArchivo, Class<T> clase) {
+    public static <T> ArrayList<T> leerJson(String ubicacionArchivo, Class<T> clase) {
         ArrayList<T> lista = new ArrayList<T>();
         try { // Lee el archivo y aplica el constructor determinado por el parametro tipo en el Json.
             lista = mapper.readValue(new File(ubicacionArchivo), mapper.getTypeFactory().constructCollectionType(ArrayList.class, clase));
@@ -21,7 +19,7 @@ public class GestorDatos {
         return lista;
     }
 
-    public <T> void grabarJson(ArrayList<T> listaAGuardar, String ubicacionArchivo) {
+    public static <T> void grabarJson(ArrayList<T> listaAGuardar, String ubicacionArchivo) {
         ObjectMapper mapper = new ObjectMapper();
         try {
             mapper.writeValue(new File(ubicacionArchivo), listaAGuardar);
