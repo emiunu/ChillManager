@@ -3,9 +3,6 @@ package model;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import data.GestorDatos;
-import model.Actividad;
-
 public class Gestor {
 	private ArrayList<Actividad> actividades;
 
@@ -23,6 +20,10 @@ public class Gestor {
 
 	public ArrayList<Actividad> getActividades() {
 		return this.actividades;
+	}
+
+	public void eliminarActividad(int index) {
+		this.actividades.remove(index);
 	}
 
 }
