@@ -14,10 +14,6 @@ public class Gestor {
 		this.actividades.add(actividad);
 	}
 
-	public void eliminarActividad(Actividad actividad) {
-		this.actividades.remove(actividad);
-	}
-
 	public ArrayList<Actividad> getActividades() {
 		return this.actividades;
 	}
