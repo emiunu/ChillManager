@@ -16,8 +16,9 @@ public class Pelicula extends Actividad {
 
     //Getter y Setter
 
+    @Override
     public String getTipo() {
-        return tipo;
+        return "Peicula";
     }
 
     public int getAnno() {

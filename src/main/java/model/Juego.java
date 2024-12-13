@@ -16,8 +16,9 @@ public class Juego extends Actividad {
 
     //Getter y Setter
 
+    @Override
     public String getTipo() {
-        return tipo;
+        return "Juego";
     }
 
     public int getFecha() {

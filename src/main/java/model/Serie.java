@@ -20,8 +20,9 @@ public class Serie extends Actividad {
 
     // Getter y Setter
 
+    @Override
     public String getTipo() {
-        return tipo;
+        return "Serie";
     }
 
     public int getTemporadas() {

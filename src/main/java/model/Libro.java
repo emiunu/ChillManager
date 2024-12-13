@@ -18,8 +18,9 @@ public class Libro extends Actividad {
 
     //Getter y Setter
 
+    @Override
     public String getTipo() {
-        return tipo;
+        return "Libro";
     }
 
     public int getIsbn() {
