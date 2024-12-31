@@ -17,8 +17,8 @@ public class Gestor {
 		return this.actividades;
 	}
 
-	public void eliminarActividad(int index) {
-		this.actividades.remove(index);
+	public void eliminarActividad(Actividad actividad) {
+		this.actividades.remove(actividad);
 	}
 
 }

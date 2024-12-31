@@ -53,7 +53,8 @@ public class VentanaPrincipal extends JFrame {
         eliminarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                EliminarActividad eliminarActividad = new EliminarActividad(ChillManager);
+                eliminarActividad.setVisible(true);
             }
         });
 

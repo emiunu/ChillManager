@@ -64,9 +64,9 @@ public class Controlador {
             return pelicula;
     }
 
-    public static boolean eliminarActividadControlador(Gestor gestor, String tipoActividad, int index) {
+    public static boolean eliminarActividadControlador(Gestor gestor, Actividad actividad) {
         try {
-            gestor.eliminarActividad(index);
+            gestor.eliminarActividad(actividad);
             return true;
         } catch (Exception e) {
             System.out.println("No se pudo eliminar la actividad");
