@@ -15,11 +15,11 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 public abstract class Actividad { // Sus parámetros son los elementos comunes entre las clases
 	private String titulo;
-	private String status;
+	private Estado status;
 	private int rating;
 	private String comentario;
 
-	public Actividad(String titulo, String status, int rating, String comentario) {
+	public Actividad(String titulo, Estado status, int rating, String comentario) {
 		this.titulo = titulo;
 		this.status = status;
 		this.rating = rating;
@@ -40,11 +40,11 @@ public abstract class Actividad { // Sus parámetros son los elementos comunes e
 		this.titulo = titulo;
 	}
 
-	public String getStatus() {
+	public Estado getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(Estado status) {
 		this.status = status;
 	}
 
@@ -62,5 +62,15 @@ public abstract class Actividad { // Sus parámetros son los elementos comunes e
 
 	public void setComentario(String comentario) {
 		this.comentario = comentario;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Actividad:\n" +
+				"Título: " + titulo +
+				", Estado: " + status +
+				", Calificación: " + rating +
+				", Comentario: " + comentario;
 	}
 }

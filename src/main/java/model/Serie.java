@@ -7,7 +7,7 @@ public class Serie extends Actividad {
     private int temporadaActual;
     private int capituloActual;
 
-    public Serie(String titulo, String status, int rating, String comentario, int temporadas, int capitulos, int temporadaActual, int capituloActual) {
+    public Serie(String titulo, int temporadas, int capitulos, int temporadaActual, int capituloActual, Estado status, int rating, String comentario) {
         super(titulo, status, rating, comentario);
         this.tipo = "Serie";
         this.temporadas = temporadas;
@@ -57,4 +57,13 @@ public class Serie extends Actividad {
         this.capituloActual = capituloActual;
     }
 
+    @Override
+    public String toString() {
+        return super.toString() +
+                ", Tipo: " + tipo +
+                ", Temporadas totales: " + temporadas +
+                ", Capítulos totales: " + capitulos +
+                ", Temporada actual: " + temporadaActual +
+                ", Capítulo actual: " + capituloActual;
+    }
 }

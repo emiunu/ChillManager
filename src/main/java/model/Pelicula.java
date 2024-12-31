@@ -5,7 +5,7 @@ public class Pelicula extends Actividad {
     private int anno;
     private int duracion;
 
-    public Pelicula(String titulo, int anno, int duracion, String status, int rating, String comentario) {
+    public Pelicula(String titulo, int anno, int duracion, Estado status, int rating, String comentario) {
         super(titulo, status, rating, comentario);
         this.tipo = "Pelicula";
         this.anno = anno;
@@ -18,7 +18,7 @@ public class Pelicula extends Actividad {
 
     @Override
     public String getTipo() {
-        return "Peicula";
+        return "Pelicula";
     }
 
     public int getAnno() {
@@ -37,4 +37,11 @@ public class Pelicula extends Actividad {
         this.duracion = duracion;
     }
 
+    @Override
+    public String toString() {
+        return super.toString() +
+                ", Tipo: " + tipo +
+                ", Año: " + anno +
+                ", Duracion:" + duracion;
+    }
 }

@@ -6,7 +6,7 @@ public class Libro extends Actividad {
     private String autor;
     private int anno;
 
-    public Libro(int isbn, String titulo, String autor, int anno, String status, int rating, String comentario) {
+    public Libro(int isbn, String titulo, String autor, int anno, Estado status, int rating, String comentario) {
         super(titulo, status, rating, comentario);
         this.tipo = "Libro";
         this.isbn = isbn;
@@ -47,4 +47,12 @@ public class Libro extends Actividad {
         this.anno = anno;
     }
 
+    @Override
+    public String toString() {
+        return super.toString() +
+                ", Tipo: " + tipo +
+                ", ISBN: " + isbn +
+                ", Autor/a: " + autor +
+                ", Año:" + anno;
+    }
 }

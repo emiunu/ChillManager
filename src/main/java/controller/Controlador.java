@@ -1,16 +1,15 @@
 package controller;
 import data.GestorDatos;
 import model.*;
-import model.Serie;
 
 public class Controlador {
     public static Gestor cargarDatos(Gestor gestor) {
-        GestorDatos.leerJson("/datos/actividades.json", Actividad.class);
+        GestorDatos.leerJson("actividades.json", Actividad.class);
         return gestor;
     }
 
     public static void guardarDatos(Gestor gestor) {
-        GestorDatos.grabarJson(gestor.getActividades(), "/datos/actividades.json");
+        GestorDatos.grabarJson(gestor.getActividades(), "actividades.json");
     }
 
     public static Actividad agregarActividad(Gestor gestor, Actividad actividad) {
@@ -22,7 +21,7 @@ public class Controlador {
         return actividad;
     }
 
-    public static Actividad modificarActividadLibro(Libro libro, int isbn, String titulo, String autor, int anno, String status, int rating, String comentario) {
+    public static Actividad modificarActividadLibro(Libro libro, int isbn, String titulo, String autor, int anno, Estado status, int rating, String comentario) {
         libro.setIsbn(isbn);
         libro.setTitulo(titulo);
         libro.setAutor(autor);
@@ -33,7 +32,7 @@ public class Controlador {
         return libro;
     }
 
-    public static Actividad modificarActividadJuego(Juego juego, String titulo, int fecha, int dlc, String status, int rating, String comentario) {
+    public static Actividad modificarActividadJuego(Juego juego, String titulo, int fecha, int dlc, Estado status, int rating, String comentario) {
         juego.setTitulo(titulo);
         juego.setFecha(fecha);
         juego.setDlc(dlc);
@@ -43,7 +42,7 @@ public class Controlador {
         return juego;
     }
 
-    public static Actividad modificarActividadSerie(Serie serie, String titulo, String status, int rating, String comentario, int temporadas, int capitulos, int temporadaActual, int capituloActual) {
+    public static Actividad modificarActividadSerie(Serie serie, String titulo, Estado status, int rating, String comentario, int temporadas, int capitulos, int temporadaActual, int capituloActual) {
         serie.setTitulo(titulo);
         serie.setStatus(status);
         serie.setRating(rating);
@@ -55,7 +54,7 @@ public class Controlador {
         return serie;
     }
 
-    public static Actividad modificarActividadPelicula(Pelicula pelicula, String titulo, int anno, int duracion, String status, int rating, String comentario) {
+    public static Actividad modificarActividadPelicula(Pelicula pelicula, String titulo, int anno, int duracion, Estado status, int rating, String comentario) {
             pelicula.setTitulo(titulo);
             pelicula.setAnno(anno);
             pelicula.setDuracion(duracion);

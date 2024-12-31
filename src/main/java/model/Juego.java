@@ -5,7 +5,7 @@ public class Juego extends Actividad {
     private int fecha;
     private int dlc;
 
-    public Juego(String titulo, int fecha, int dlc, String status, int rating, String comentario) {
+    public Juego(String titulo, int fecha, int dlc, Estado status, int rating, String comentario) {
         super(titulo, status, rating, comentario);
         this.tipo = "Juego";
         this.fecha = fecha;
@@ -37,4 +37,11 @@ public class Juego extends Actividad {
         this.dlc = dlc;
     }
 
+    @Override
+    public String toString() {
+        return super.toString() +
+                ", Tipo: " + tipo +
+                ", Año: " + fecha +
+                ", DLC's: " + dlc;
+    }
 }
