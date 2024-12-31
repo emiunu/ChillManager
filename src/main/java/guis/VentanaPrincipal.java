@@ -61,7 +61,8 @@ public class VentanaPrincipal extends JFrame {
         coleccionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                Coleccion coleccion = new Coleccion(ChillManager);
+                coleccion.setVisible(true);
             }
         });
 

@@ -79,7 +79,7 @@ public class EliminarActividad extends JFrame {
         }
     }
 
-    public void eliminarActividad(Gestor ChillManager, String titulo){
+    private void eliminarActividad(Gestor ChillManager, String titulo){
         for (Actividad actividadEnLista : ChillManager.getActividades()){
             if (Utilidad.entregarActividad(titulo,ChillManager) == actividadEnLista){
                 Controlador.eliminarActividadControlador(ChillManager,actividadEnLista);
