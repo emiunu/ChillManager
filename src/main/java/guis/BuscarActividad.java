@@ -43,7 +43,11 @@ public class BuscarActividad extends JFrame {
         buscarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mostrarResultado(ChillManager);
+                if (verificarResultado(ChillManager)) {
+                    mostrarResultado(ChillManager);
+                } else {
+                    JOptionPane.showMessageDialog(BuscarActividad.this,"No hay resultados para este título.","Error",JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
 
@@ -55,6 +59,14 @@ public class BuscarActividad extends JFrame {
                 }
             }
         });
+    }
+
+    public boolean verificarResultado(Gestor ChillManager){
+        String titulo = tituloText.getText();
+        if (!Utilidad.tituloUnico(titulo,ChillManager)){
+            return true;
+        }
+        return false;
     }
 
     public void mostrarResultado(Gestor ChillManager){

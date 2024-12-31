@@ -46,7 +46,8 @@ public class VentanaPrincipal extends JFrame {
         modificarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                ModificarActividad modificarActividad = new ModificarActividad(ChillManager);
+                modificarActividad.setVisible(true);
             }
         });
 

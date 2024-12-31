@@ -42,7 +42,11 @@ public class EliminarActividad extends JFrame {
         buscarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mostrarResultado(ChillManager);
+                if (verificarResultado(ChillManager)) {
+                    mostrarResultado(ChillManager);
+                } else {
+                    JOptionPane.showMessageDialog(EliminarActividad.this,"No hay resultados para este título.","Error",JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
 

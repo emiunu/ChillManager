@@ -172,7 +172,7 @@ public class AgregarActividad extends JFrame {
         int anno = Integer.parseInt(annoPeliculaText.getText());
         int duracion = Integer.parseInt(duracionText.getText());
         Pelicula peliculaAgregada = new Pelicula(titulo,anno,duracion,status,rating,comentario);
-        JOptionPane.showMessageDialog(AgregarActividad.this, peliculaAgregada.toString(), "Pelicula agregado", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(AgregarActividad.this, peliculaAgregada.toString(), "Pelicula agregada", JOptionPane.INFORMATION_MESSAGE);
         return peliculaAgregada;
     }
 
@@ -182,7 +182,7 @@ public class AgregarActividad extends JFrame {
         int temporadaActual = Integer.parseInt(tempActualText.getText());
         int capituloActual = Integer.parseInt(capActualText.getText());
         Serie serieAgregada = new Serie(titulo,temporadas,capitulos,temporadaActual,capituloActual,status,rating,comentario);
-        JOptionPane.showMessageDialog(AgregarActividad.this, serieAgregada.toString(), "Serie agregado", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(AgregarActividad.this, serieAgregada.toString(), "Serie agregada", JOptionPane.INFORMATION_MESSAGE);
         return serieAgregada;
     }
 }
