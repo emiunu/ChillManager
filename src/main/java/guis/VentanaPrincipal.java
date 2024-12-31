@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import controller.Controlador;
+import controller.*;
 import model.*;
 
 public class VentanaPrincipal extends JFrame {
@@ -38,7 +38,8 @@ public class VentanaPrincipal extends JFrame {
         buscarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                BuscarActividad buscarActividad = new BuscarActividad(ChillManager);
+                buscarActividad.setVisible(true);
             }
         });
 
