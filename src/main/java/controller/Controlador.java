@@ -21,9 +21,7 @@ public class Controlador {
         return actividad;
     }
 
-    public static Actividad modificarActividadLibro(Libro libro, int isbn, String titulo, String autor, int anno, Estado status, int rating, String comentario) {
-        libro.setIsbn(isbn);
-        libro.setTitulo(titulo);
+    public static Actividad modificarActividadLibro(Libro libro, String autor, int anno, Estado status, int rating, String comentario) {
         libro.setAutor(autor);
         libro.setAnno(anno);
         libro.setStatus(status);
@@ -32,8 +30,7 @@ public class Controlador {
         return libro;
     }
 
-    public static Actividad modificarActividadJuego(Juego juego, String titulo, int fecha, int dlc, Estado status, int rating, String comentario) {
-        juego.setTitulo(titulo);
+    public static Actividad modificarActividadJuego(Juego juego, int fecha, int dlc, Estado status, int rating, String comentario) {
         juego.setFecha(fecha);
         juego.setDlc(dlc);
         juego.setStatus(status);
@@ -42,8 +39,7 @@ public class Controlador {
         return juego;
     }
 
-    public static Actividad modificarActividadSerie(Serie serie, String titulo, Estado status, int rating, String comentario, int temporadas, int capitulos, int temporadaActual, int capituloActual) {
-        serie.setTitulo(titulo);
+    public static Actividad modificarActividadSerie(Serie serie, Estado status, int rating, String comentario, int temporadas, int capitulos, int temporadaActual, int capituloActual) {
         serie.setStatus(status);
         serie.setRating(rating);
         serie.setComentario(comentario);
@@ -54,8 +50,7 @@ public class Controlador {
         return serie;
     }
 
-    public static Actividad modificarActividadPelicula(Pelicula pelicula, String titulo, int anno, int duracion, Estado status, int rating, String comentario) {
-            pelicula.setTitulo(titulo);
+    public static Actividad modificarActividadPelicula(Pelicula pelicula, int anno, int duracion, Estado status, int rating, String comentario) {
             pelicula.setAnno(anno);
             pelicula.setDuracion(duracion);
             pelicula.setStatus(status);

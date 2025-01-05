@@ -21,7 +21,7 @@ public class ModificarActividad extends JFrame {
     private JTextField dlcText;
     private JPanel libroPanel;
     private JLabel isbnLabel;
-    private JTextField isbnText;
+    private JLabel isbnText;
     private JLabel autorLabel;
     private JTextField autorText;
     private JLabel annoLibroLabel;
@@ -103,10 +103,8 @@ public class ModificarActividad extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String tipo = tipoToFillLabel.getText();
-                if (validacionGuardar(ChillManager,tipo)){
-                    modificarActividad(ChillManager,tipo);
-                    dispose();
-                }
+                modificarActividad(ChillManager,tipo);
+                dispose();
             }
         });
     }
@@ -114,23 +112,6 @@ public class ModificarActividad extends JFrame {
     public boolean validacionBusqueda(String titulo, Gestor ChillManager){
         if (Utilidad.tituloUnico(titulo,ChillManager)){
             return false; //titulo disponible, no existe resultado.
-        }
-        return true;
-    }
-
-    public boolean validacionGuardar(Gestor ChillManager,String tipo){
-        String titulo = tituloText.getText();
-        if (Objects.equals(tipo, "Libro")){
-            int isbn = Integer.parseInt(isbnText.getText());
-            if (!Utilidad.isbnUnico(isbn,ChillManager)){
-                JOptionPane.showMessageDialog(ModificarActividad.this,"Este ISBN ya existe.","Error",JOptionPane.ERROR_MESSAGE);
-                return false;
-            } else if (Utilidad.stringVacio(autorText.getText())){
-                JOptionPane.showMessageDialog(ModificarActividad.this,"Hace falta completar el campo 'Autor/a'.","Error",JOptionPane.ERROR_MESSAGE);
-            }
-        } else if (!Utilidad.tituloUnico(titulo,ChillManager)){
-            JOptionPane.showMessageDialog(ModificarActividad.this,"Este título ya existe.","Error",JOptionPane.ERROR_MESSAGE);
-            return false;
         }
         return true;
     }
@@ -201,54 +182,52 @@ public class ModificarActividad extends JFrame {
     }
 
     private void modificarActividad(Gestor ChillManager, String tipo){
-        String titulo = tituloText.getText();
         Estado status = Estado.valueOf((String) estadoBox.getSelectedItem());
         int rating = ratingBox.getSelectedIndex();
         String comentario = comentText.getText();
 
         if (Objects.equals(tipo, "Juego")){
-            nuevoJuego(ChillManager,titulo,status,rating,comentario);
+            nuevoJuego(ChillManager,status,rating,comentario);
         } else if (Objects.equals(tipo, "Libro")){
-            nuevoLibro(ChillManager,titulo,status,rating,comentario);
+            nuevoLibro(ChillManager,status,rating,comentario);
         } else if (Objects.equals(tipo, "Pelicula")){
-            nuevaPelicula(ChillManager,titulo,status,rating,comentario);
+            nuevaPelicula(ChillManager,status,rating,comentario);
         } else if (Objects.equals(tipo, "Serie")){
-            nuevaSerie(ChillManager,titulo,status,rating,comentario);
+            nuevaSerie(ChillManager,status,rating,comentario);
         }
     }
 
-    public void nuevoJuego(Gestor ChillManager,String titulo, Estado status, int rating, String comentario){
+    public void nuevoJuego(Gestor ChillManager, Estado status, int rating, String comentario){
         int fecha = Integer.parseInt(fechaJuegoText.getText());
         int dlc = Integer.parseInt(dlcText.getText());
         Juego juegoOriginal = (Juego) Utilidad.entregarActividad(resultadoLabel.getText(),ChillManager);
-        Controlador.modificarActividadJuego(juegoOriginal,titulo,fecha,dlc,status,rating,comentario);
+        Controlador.modificarActividadJuego(juegoOriginal,fecha,dlc,status,rating,comentario);
         JOptionPane.showMessageDialog(ModificarActividad.this,"Se ha modificado exitosamente.","Juego modificado",JOptionPane.INFORMATION_MESSAGE);
     }
 
-    public void nuevoLibro(Gestor ChillManager,String titulo, Estado status, int rating, String comentario) {
-        int isbn = Integer.parseInt(isbnText.getText());
+    public void nuevoLibro(Gestor ChillManager,Estado status, int rating, String comentario) {
         String autor = autorText.getText();
         int anno = Integer.parseInt(annoLibroText.getText());
         Libro libroOriginal = (Libro) Utilidad.entregarActividad(resultadoLabel.getText(),ChillManager);
-        Controlador.modificarActividadLibro(libroOriginal,isbn,titulo,autor,anno,status,rating,comentario);
+        Controlador.modificarActividadLibro(libroOriginal,autor,anno,status,rating,comentario);
         JOptionPane.showMessageDialog(ModificarActividad.this,"Se ha modificado exitosamente.","Libro modificado",JOptionPane.INFORMATION_MESSAGE);
     }
 
-    public void nuevaPelicula(Gestor ChillManager,String titulo, Estado status, int rating, String comentario) {
+    public void nuevaPelicula(Gestor ChillManager, Estado status, int rating, String comentario) {
         int anno = Integer.parseInt(annoPeliculaText.getText());
         int duracion = Integer.parseInt(duracionText.getText());
         Pelicula peliculaOriginal = (Pelicula) Utilidad.entregarActividad(resultadoLabel.getText(),ChillManager);
-        Controlador.modificarActividadPelicula(peliculaOriginal,titulo,anno,duracion,status,rating,comentario);
+        Controlador.modificarActividadPelicula(peliculaOriginal,anno,duracion,status,rating,comentario);
         JOptionPane.showMessageDialog(ModificarActividad.this,"Se ha modificado exitosamente.","Pelicula modificada",JOptionPane.INFORMATION_MESSAGE);
     }
 
-    public void nuevaSerie(Gestor ChillManager,String titulo, Estado status, int rating, String comentario) {
+    public void nuevaSerie(Gestor ChillManager, Estado status, int rating, String comentario) {
         int temporadas = Integer.parseInt(tempTotalesText.getText());
         int capitulos = Integer.parseInt(capTotalesText.getText());
         int temporadaActual = Integer.parseInt(tempActualText.getText());
         int capituloActual = Integer.parseInt(capActualText.getText());
         Serie serieOriginal = (Serie) Utilidad.entregarActividad(resultadoLabel.getText(),ChillManager);
-        Controlador.modificarActividadSerie(serieOriginal,titulo,status,rating,comentario,temporadas,capitulos,temporadaActual,capituloActual);
+        Controlador.modificarActividadSerie(serieOriginal,status,rating,comentario,temporadas,capitulos,temporadaActual,capituloActual);
         JOptionPane.showMessageDialog(ModificarActividad.this,"Se ha modificado exitosamente.","Serie modificada",JOptionPane.INFORMATION_MESSAGE);
     }
 }
