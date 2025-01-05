@@ -54,7 +54,7 @@ public class ModificarActividad extends JFrame {
     private JButton buscarButton;
     private JPanel modificarPanel;
     private JButton confirmarButton;
-    private JLabel originalTituloToFillLabel;
+    private JLabel resultadoLabel;
 
     public ModificarActividad(Gestor ChillManager){
         setTitle("Modificar Actividad");
@@ -65,7 +65,7 @@ public class ModificarActividad extends JFrame {
 
         add(mainPanel);
 
-        originalTituloToFillLabel.setVisible(false);
+        resultadoLabel.setVisible(false);
 
         for (Estado estado : Estado.values()){
             estadoBox.addItem(estado.toString());
@@ -86,7 +86,7 @@ public class ModificarActividad extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String titulo = tituloText.getText();
-                originalTituloToFillLabel.setText(titulo);
+                resultadoLabel.setText(titulo);
                 if (validacionBusqueda(titulo,ChillManager)){
                     Actividad actividad = Objects.requireNonNull(Utilidad.entregarActividad(titulo, ChillManager));
                     String tipo = actividad.getTipo();
@@ -220,7 +220,7 @@ public class ModificarActividad extends JFrame {
     public void nuevoJuego(Gestor ChillManager,String titulo, Estado status, int rating, String comentario){
         int fecha = Integer.parseInt(fechaJuegoText.getText());
         int dlc = Integer.parseInt(dlcText.getText());
-        Juego juegoOriginal = (Juego) Utilidad.entregarActividad(originalTituloToFillLabel.getText(),ChillManager);
+        Juego juegoOriginal = (Juego) Utilidad.entregarActividad(resultadoLabel.getText(),ChillManager);
         Controlador.modificarActividadJuego(juegoOriginal,titulo,fecha,dlc,status,rating,comentario);
         JOptionPane.showMessageDialog(ModificarActividad.this,"Se ha modificado exitosamente.","Juego modificado",JOptionPane.INFORMATION_MESSAGE);
     }
@@ -229,7 +229,7 @@ public class ModificarActividad extends JFrame {
         int isbn = Integer.parseInt(isbnText.getText());
         String autor = autorText.getText();
         int anno = Integer.parseInt(annoLibroText.getText());
-        Libro libroOriginal = (Libro) Utilidad.entregarActividad(originalTituloToFillLabel.getText(),ChillManager);
+        Libro libroOriginal = (Libro) Utilidad.entregarActividad(resultadoLabel.getText(),ChillManager);
         Controlador.modificarActividadLibro(libroOriginal,isbn,titulo,autor,anno,status,rating,comentario);
         JOptionPane.showMessageDialog(ModificarActividad.this,"Se ha modificado exitosamente.","Libro modificado",JOptionPane.INFORMATION_MESSAGE);
     }
@@ -237,7 +237,7 @@ public class ModificarActividad extends JFrame {
     public void nuevaPelicula(Gestor ChillManager,String titulo, Estado status, int rating, String comentario) {
         int anno = Integer.parseInt(annoPeliculaText.getText());
         int duracion = Integer.parseInt(duracionText.getText());
-        Pelicula peliculaOriginal = (Pelicula) Utilidad.entregarActividad(originalTituloToFillLabel.getText(),ChillManager);
+        Pelicula peliculaOriginal = (Pelicula) Utilidad.entregarActividad(resultadoLabel.getText(),ChillManager);
         Controlador.modificarActividadPelicula(peliculaOriginal,titulo,anno,duracion,status,rating,comentario);
         JOptionPane.showMessageDialog(ModificarActividad.this,"Se ha modificado exitosamente.","Pelicula modificada",JOptionPane.INFORMATION_MESSAGE);
     }
@@ -247,7 +247,7 @@ public class ModificarActividad extends JFrame {
         int capitulos = Integer.parseInt(capTotalesText.getText());
         int temporadaActual = Integer.parseInt(tempActualText.getText());
         int capituloActual = Integer.parseInt(capActualText.getText());
-        Serie serieOriginal = (Serie) Utilidad.entregarActividad(originalTituloToFillLabel.getText(),ChillManager);
+        Serie serieOriginal = (Serie) Utilidad.entregarActividad(resultadoLabel.getText(),ChillManager);
         Controlador.modificarActividadSerie(serieOriginal,titulo,status,rating,comentario,temporadas,capitulos,temporadaActual,capituloActual);
         JOptionPane.showMessageDialog(ModificarActividad.this,"Se ha modificado exitosamente.","Serie modificada",JOptionPane.INFORMATION_MESSAGE);
     }

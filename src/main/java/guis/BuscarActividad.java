@@ -20,6 +20,7 @@ public class BuscarActividad extends JFrame {
     private JButton buscarButton;
     private JLabel instruccionLabel;
     private JScrollPane scrollResultado;
+    private JLabel resultadoLabel;
 
     public BuscarActividad(Gestor ChillManager){
         setTitle("Buscar Actividad");
@@ -39,10 +40,12 @@ public class BuscarActividad extends JFrame {
             }
         };
         resultado.setModel(model);
+        resultadoLabel.setVisible(false);
 
         buscarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                resultadoLabel.setText(tituloText.getText());
                 if (verificarResultado(ChillManager)) {
                     mostrarResultado(ChillManager);
                 } else {
@@ -62,7 +65,7 @@ public class BuscarActividad extends JFrame {
     }
 
     public boolean verificarResultado(Gestor ChillManager){
-        String titulo = tituloText.getText();
+        String titulo = resultadoLabel.getText();
         if (!Utilidad.tituloUnico(titulo,ChillManager)){
             return true;
         }
@@ -72,7 +75,7 @@ public class BuscarActividad extends JFrame {
     public void mostrarResultado(Gestor ChillManager){
         DefaultTableModel model = (DefaultTableModel) resultado.getModel();
         model.setRowCount(0);
-        String titulo = tituloText.getText();
+        String titulo = resultadoLabel.getText();
 
         for (Actividad actividadEnLista : ChillManager.getActividades()){
             if (Utilidad.entregarActividad(titulo,ChillManager) == actividadEnLista){
@@ -82,7 +85,7 @@ public class BuscarActividad extends JFrame {
     }
 
     private void detallarResultado(Gestor ChillManager){
-        String titulo = tituloText.getText();
+        String titulo = resultadoLabel.getText();
         String detalle;
         detalle = Objects.requireNonNull(Utilidad.entregarActividad(titulo, ChillManager)).toString();
         JOptionPane.showMessageDialog(BuscarActividad.this, detalle, "Detalles de la Actividad", JOptionPane.INFORMATION_MESSAGE);

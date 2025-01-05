@@ -57,7 +57,7 @@
                   <text value="Buscar"/>
                 </properties>
               </component>
-              <component id="56371" class="javax.swing.JLabel" binding="originalTituloToFillLabel">
+              <component id="56371" class="javax.swing.JLabel" binding="resultadoLabel">
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>

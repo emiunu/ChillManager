@@ -19,6 +19,7 @@ public class EliminarActividad extends JFrame {
     private JButton eliminarSeleccionButton;
     private JLabel tituloLabel;
     private JScrollPane scrollResultado;
+    private JLabel resultadoLabel;
 
     public EliminarActividad(Gestor ChillManager){
         setTitle("Eliminar Actividad");
@@ -38,11 +39,14 @@ public class EliminarActividad extends JFrame {
             }
         };
         resultado.setModel(model);
+        resultadoLabel.setVisible(false);
 
         buscarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (verificarResultado(ChillManager)) {
+                resultadoLabel.setText(tituloText.getText());
+                String titulo = resultadoLabel.getText();
+                if (verificarResultado(ChillManager,titulo)) {
                     mostrarResultado(ChillManager);
                 } else {
                     JOptionPane.showMessageDialog(EliminarActividad.this,"No hay resultados para este título.","Error",JOptionPane.ERROR_MESSAGE);
@@ -53,7 +57,9 @@ public class EliminarActividad extends JFrame {
         eliminarSeleccionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (verificarResultado(ChillManager)){
+                String titulo = resultadoLabel.getText();
+                if (verificarResultado(ChillManager,titulo)){
+                    eliminarActividad(ChillManager,titulo);
                     dispose();
                 } else {
                     JOptionPane.showMessageDialog(EliminarActividad.this, "No hay resultados para eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -62,10 +68,8 @@ public class EliminarActividad extends JFrame {
         });
     }
 
-    public boolean verificarResultado(Gestor ChillManager){
-        String titulo = tituloText.getText();
+    public boolean verificarResultado(Gestor ChillManager,String titulo){
         if (!Utilidad.tituloUnico(titulo,ChillManager)){
-            eliminarActividad(ChillManager,titulo);
             return true;
         }
         return false;
@@ -74,7 +78,7 @@ public class EliminarActividad extends JFrame {
     public void mostrarResultado(Gestor ChillManager){
         DefaultTableModel model = (DefaultTableModel) resultado.getModel();
         model.setRowCount(0);
-        String titulo = tituloText.getText();
+        String titulo = resultadoLabel.getText();
 
         for (Actividad actividadEnLista : ChillManager.getActividades()){
             if (Utilidad.entregarActividad(titulo,ChillManager) == actividadEnLista){
