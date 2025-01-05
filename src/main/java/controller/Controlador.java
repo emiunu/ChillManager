@@ -4,7 +4,7 @@ import model.*;
 
 public class Controlador {
     public static Gestor cargarDatos(Gestor gestor) {
-        GestorDatos.leerJson("actividades.json", Actividad.class);
+        gestor.setActividades(GestorDatos.leerJson("actividades.json", Actividad.class));
         return gestor;
     }
 

@@ -9,6 +9,10 @@ public class Gestor {
 		this.actividades = new ArrayList<Actividad>();
 	}
 
+	public void setActividades(ArrayList<Actividad> actividades) {
+		this.actividades = actividades;
+	}
+
 	public void agregarActividad(Actividad actividad) {
 		this.actividades.add(actividad);
 	}
