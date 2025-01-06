@@ -40,12 +40,14 @@ public class GestorDatos {
      * @param <T> El tipo de los objetos que se van a guardar.
      */
 
-    public static <T> void grabarJson(ArrayList<T> listaAGuardar, String ubicacionArchivo) {
+    public static <T> boolean grabarJson(ArrayList<T> listaAGuardar, String ubicacionArchivo) {
         ObjectMapper mapper = new ObjectMapper();
         try {
             mapper.writeValue(new File(ubicacionArchivo), listaAGuardar);
+            return true;
         } catch (Exception e) {
             System.err.println("Error al guardar el archivo en la ubicacion " + ubicacionArchivo + ": " + e.getMessage());
+            return false;
         }
     }
 

@@ -1,0 +1,41 @@
+[
+  {
+    "titulo": "Juego 1",
+    "status": "EN_PROGRESO",
+    "rating": 10,
+    "comentario": "WAA",
+    "tipo": "Juego",
+    "fecha": 2024,
+    "dlc": 1
+  },
+  {
+    "titulo": "Libro 1",
+    "status": "EN_PROGRESO",
+    "rating": 0,
+    "comentario": "waa",
+    "tipo": "Libro",
+    "isbn": 1234567890,
+    "autor": "Autor",
+    "anno": 2024
+  },
+  {
+    "titulo": "Pelicula 1",
+    "status": "EN_PROGRESO",
+    "rating": 10,
+    "comentario": "wa a",
+    "tipo": "Pelicula",
+    "anno": 2024,
+    "duracion": 120
+  },
+  {
+    "titulo": "Serie 1",
+    "status": "EN_PROGRESO",
+    "rating": 10,
+    "comentario": "WaA",
+    "tipo": "Serie",
+    "temporadas": 2,
+    "capitulos": 20,
+    "temporadaActual": 1,
+    "capituloActual": 10
+  }
+]
