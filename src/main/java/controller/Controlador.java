@@ -8,8 +8,8 @@ public class Controlador {
         return gestor;
     }
 
-    public static void guardarDatos(Gestor gestor) {
-        GestorDatos.grabarJson(gestor.getActividades(), "actividades.json");
+    public static boolean guardarDatos(Gestor gestor) {
+        return GestorDatos.grabarJson(gestor.getActividades(), "actividades.json");
     }
 
     public static Actividad agregarActividad(Gestor gestor, Actividad actividad) {
