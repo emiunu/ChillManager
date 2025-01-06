@@ -139,10 +139,10 @@ public class Controlador {
      */
 
     public static boolean eliminarActividadControlador(Gestor gestor, Actividad actividad) {
-        try {
+        if (gestor.getActividades().contains(actividad)) {
             gestor.eliminarActividad(actividad);
             return true;
-        } catch (Exception e) {
+        } else {
             System.out.println("No se pudo eliminar la actividad");
             return false;
         }
