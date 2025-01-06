@@ -1,6 +1,7 @@
 package controller;
 import data.GestorDatos;
 import model.*;
+import utils.Utilidad;
 
 /**
  * Clase Controlador que se encarga de manejar las actividades
@@ -139,7 +140,7 @@ public class Controlador {
      */
 
     public static boolean eliminarActividadControlador(Gestor gestor, Actividad actividad) {
-        if (gestor.getActividades().contains(actividad)) {
+        if (!Utilidad.tituloUnico(actividad.getTitulo(), gestor)) {
             gestor.eliminarActividad(actividad);
             return true;
         } else {
