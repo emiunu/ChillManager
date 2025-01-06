@@ -129,7 +129,7 @@ public class Serie extends Actividad {
     @Override
     public String toString() {
         return super.toString() +
-                ", Tipo: " + tipo +
+                ", Tipo: " + this.getTipo() +
                 ", Temporadas totales: " + temporadas +
                 ", Capítulos totales: " + capitulos +
                 ", Temporada actual: " + temporadaActual +

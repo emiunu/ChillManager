@@ -104,7 +104,7 @@ public class Libro extends Actividad {
     @Override
     public String toString() {
         return super.toString() +
-                ", Tipo: " + tipo +
+                ", Tipo: " + this.getTipo() +
                 ", ISBN: " + isbn +
                 ", Autor/a: " + autor +
                 ", Año:" + anno;

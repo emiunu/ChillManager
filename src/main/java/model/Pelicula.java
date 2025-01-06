@@ -86,7 +86,7 @@ public class Pelicula extends Actividad {
     @Override
     public String toString() {
         return super.toString() +
-                ", Tipo: " + tipo +
+                ", Tipo: " + this.getTipo() +
                 ", Año: " + anno +
                 ", Duracion:" + duracion;
     }

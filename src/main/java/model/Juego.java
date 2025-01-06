@@ -84,7 +84,7 @@ public class Juego extends Actividad {
     @Override
     public String toString() {
         return super.toString() +
-                ", Tipo: " + tipo +
+                ", Tipo: " + this.getTipo() +
                 ", Año: " + fecha +
                 ", DLC's: " + dlc;
     }
