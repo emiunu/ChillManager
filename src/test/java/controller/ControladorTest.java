@@ -56,18 +56,58 @@ class ControladorTest {
 
     @Test
     void modificarActividadLibro() {
+        Controlador.modificarActividadLibro(libro1,"Autor2",1910,Estado.FINALIZADO, 5, "Comentario");
+        for (Actividad actividad : ChillManager.getActividades()) {
+            if (actividad.getTitulo().equals("Libro 1")) {
+                assertEquals("Autor2", ((Libro) actividad).getAutor());
+                assertEquals(1910, ((Libro) actividad).getAnno());
+                assertEquals(Estado.FINALIZADO, ((Libro) actividad).getStatus());
+                assertEquals(5, ((Libro) actividad).getRating());
+                assertEquals("Comentario", ((Libro) actividad).getComentario());
+            }
+        }
     }
 
     @Test
     void modificarActividadJuego() {
+        Controlador.modificarActividadJuego(juego1,2005, 20, Estado.FINALIZADO, 5, "Comentarios20");
+        for (Actividad actividad : ChillManager.getActividades()) {
+            if (actividad.getTitulo().equals("Juego 1")) {
+                assertEquals(2005, ((Juego) actividad).getFecha());
+                assertEquals(Estado.FINALIZADO, ((Juego) actividad).getStatus());
+                assertEquals(5, ((Juego) actividad).getRating());
+                assertEquals("Comentarios20", ((Juego) actividad).getComentario());
+            }
+        }
     }
 
     @Test
     void modificarActividadSerie() {
+        Controlador.modificarActividadSerie(serie1,Estado.EN_PROGRESO, 8, "Comentario202", 5, 1, 2, 3);
+        for (Actividad actividad : ChillManager.getActividades()) {
+            if (actividad.getTitulo().equals("Serie 1")) {
+                assertEquals(Estado.EN_PROGRESO, ((Serie) actividad).getStatus());
+                assertEquals(8, ((Serie) actividad).getRating());
+                assertEquals("Comentario202", ((Serie) actividad).getComentario());
+                assertEquals(5, ((Serie) actividad).getTemporadas());
+                assertEquals(1, ((Serie) actividad).getCapitulos());
+                assertEquals(2, ((Serie) actividad).getTemporadaActual());
+                assertEquals(3, ((Serie) actividad).getCapituloActual());
+            }
+        }
     }
 
     @Test
     void modificarActividadPelicula() {
+        Controlador.modificarActividadPelicula(pelicula1,2005, 120, Estado.FINALIZADO, 5, "Comentarios20");
+        for (Actividad actividad : ChillManager.getActividades()) {
+            if (actividad.getTitulo().equals("Pelicula 1")) {
+                assertEquals(2005, ((Pelicula) actividad).getAnno());
+                assertEquals(Estado.FINALIZADO, ((Pelicula) actividad).getStatus());
+                assertEquals(5, ((Pelicula) actividad).getRating());
+                assertEquals("Comentarios20", ((Pelicula) actividad).getComentario());
+            }
+        }
     }
 
     @Test
