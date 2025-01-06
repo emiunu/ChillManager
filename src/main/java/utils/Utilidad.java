@@ -4,7 +4,7 @@ import model.*;
 import java.util.Objects;
 
 /**
- * Clase Utilidad que se encarga de manejar los metodos basicos
+ * Clase Utilidad que se encarga de manejar los métodos básicos
  * Usados en el programa.
  */
 
