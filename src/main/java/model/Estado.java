@@ -1,6 +1,7 @@
 package model;
 /**
- * Enumerado que contiene los estados posibles de una actividad
+ * Enum que contiene los estados posibles de una actividad
+ * Los cuales son "Sin empezar", "En progreso" y "Finalizado/a"
  */
 
 public enum Estado {
@@ -20,7 +21,7 @@ public enum Estado {
 	}
 
 	/**
-	 * Constructor del enumerado Estado
+	 * Constructor del enum Estado
 	 * @param estado El estado de la actividad
 	 */
 
