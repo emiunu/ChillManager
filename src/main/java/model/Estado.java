@@ -5,8 +5,19 @@ package model;
  */
 
 public enum Estado {
+	/**
+	 * Estado que indica que no se ha empezado a jugar/leer/ver la actividad.
+	 */
 	SIN_EMPEZAR("Sin empezar"),
+
+	/**
+	 * Estado que indica que se está en proceso de jugar/leer/ver la actividad.
+	 */
 	EN_PROGRESO("En progreso"),
+
+	/**
+	 * Estado que indica que se ha finalizado de jugar/leer/ver la actividad.
+	 */
 	FINALIZADO("Finalizado/a");
 
 	private String estado;

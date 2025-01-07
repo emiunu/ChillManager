@@ -7,6 +7,10 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * Ventana para ver la colección de actividades.
+ */
+
 public class Coleccion extends JFrame {
 
     private JPanel mainPanel;
@@ -14,6 +18,12 @@ public class Coleccion extends JFrame {
     private JScrollPane scrollColeccion;
     private JTable coleccionTabla;
     private JPanel coleccionPanel;
+
+    /**
+     * Constructor de la ventana para ver la colección de actividades.
+     *
+     * @param ChillManager Gestor que contiene los datos.
+     */
 
     public Coleccion(Gestor ChillManager){
         setTitle("Colección de Actividades");

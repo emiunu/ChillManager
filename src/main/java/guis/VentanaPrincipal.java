@@ -7,6 +7,10 @@ import java.awt.event.ActionListener;
 import controller.*;
 import model.*;
 
+/**
+ * Ventana principal del gestor de actividades.
+ */
+
 public class VentanaPrincipal extends JFrame {
     private JPanel mainPanel;
     private JPanel elegirAccionPanel;
@@ -17,6 +21,12 @@ public class VentanaPrincipal extends JFrame {
     private JButton coleccionButton;
     private JLabel tituloLabel;
     private JButton guardarDatosButton;
+
+    /**
+     * Constructor de la ventana principal del gestor de actividades.
+     *
+     * @param ChillManager Gestor que contiene los datos.
+     */
 
     public VentanaPrincipal(Gestor ChillManager){
         setTitle("Chill Manager");

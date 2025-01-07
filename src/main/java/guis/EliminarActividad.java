@@ -9,6 +9,10 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Ventana para eliminar actividades.
+ */
+
 public class EliminarActividad extends JFrame {
 
     private JPanel mainPanel;
@@ -20,6 +24,12 @@ public class EliminarActividad extends JFrame {
     private JLabel tituloLabel;
     private JScrollPane scrollResultado;
     private JLabel resultadoLabel;
+
+    /**
+     * Constructor de la ventana para eliminar actividades.
+     *
+     * @param ChillManager Gestor que contiene los datos.
+     */
 
     public EliminarActividad(Gestor ChillManager){
         setTitle("Eliminar Actividad");
@@ -72,6 +82,7 @@ public class EliminarActividad extends JFrame {
      * Método para verificar que el título que se está buscando exista en la colección.
      *
      * @param ChillManager Gestor que contiene los datos.
+     * @param titulo Título de la actividad que se está buscando.
      * @return Devuelve true si el título se encontró, false si no existe en la lista.
      */
 

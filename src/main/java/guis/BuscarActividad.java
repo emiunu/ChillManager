@@ -11,6 +11,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Objects;
 
+/**
+ * Ventana para buscar actividades.
+ */
+
 public class BuscarActividad extends JFrame {
     private JPanel mainPanel;
     private JTextField tituloText;
@@ -21,6 +25,12 @@ public class BuscarActividad extends JFrame {
     private JLabel instruccionLabel;
     private JScrollPane scrollResultado;
     private JLabel resultadoLabel;
+
+    /**
+     * Constructor de la ventana para buscar actividades.
+     *
+     * @param ChillManager Gestor que contiene los datos.
+     */
 
     public BuscarActividad(Gestor ChillManager){
         setTitle("Buscar Actividad");

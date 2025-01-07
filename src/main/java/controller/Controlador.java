@@ -52,6 +52,7 @@ public class Controlador {
      * Metodo que modifica una Actividad Libro del gestor
      * @param libro Libro a modificar
      * @param autor El nuevo autor de la actividad
+     * @param anno El nuevo año de la actividad
      * @param status El nuevo status de la actividad
      * @param rating El nuevo rating de la actividad
      * @param comentario El nuevo comentario de la actividad

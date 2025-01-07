@@ -9,6 +9,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 
+/**
+ * Ventana para modificar actividades.
+ */
+
 public class ModificarActividad extends JFrame {
 
     private JPanel mainPanel;
@@ -55,6 +59,12 @@ public class ModificarActividad extends JFrame {
     private JPanel modificarPanel;
     private JButton confirmarButton;
     private JLabel resultadoLabel;
+
+    /**
+     * Constructor de la ventana para modificar actividades.
+     *
+     * @param ChillManager Gestor que contiene los datos.
+     */
 
     public ModificarActividad(Gestor ChillManager){
         setTitle("Modificar Actividad");
@@ -112,6 +122,7 @@ public class ModificarActividad extends JFrame {
     /**
      * Método para verificar que el título que se está buscando exista en la colección.
      *
+     * @param titulo Título de la actividad que se está buscando.
      * @param ChillManager Gestor que contiene los datos.
      * @return Devuelve true si el título se encontró, false si no existe en la lista.
      */

@@ -14,8 +14,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 })
 
 /**
- * Clase abstracta que contiene los atributos comunes de las clases Juego, Libro, Pelicula y Serie.
- *
+  Clase abstracta que contiene los atributos comunes de las clases Juego, Libro, Pelicula y Serie.
+
  */
 public abstract class Actividad { // Sus parámetros son los elementos comunes entre las clases
 	private String titulo;

@@ -38,6 +38,7 @@ public class GestorDatos {
      * @param listaAGuardar Lista de tipo ArrayList de objetos que se van a guardar.
      * @param ubicacionArchivo La ubicación del archivo Json.
      * @param <T> El tipo de los objetos que se van a guardar.
+     * @return Devuelve true cuando la grabación del json ha sido exitosa, en caso contrario (si encuentra errores), devuelve false.
      */
 
     public static <T> boolean grabarJson(ArrayList<T> listaAGuardar, String ubicacionArchivo) {

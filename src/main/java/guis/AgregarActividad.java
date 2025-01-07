@@ -9,6 +9,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 
+/**
+ * Ventana para agregar actividades.
+ */
+
 public class AgregarActividad extends JFrame {
     private JPanel mainPanel;
     private JPanel agregarPanel;
@@ -51,6 +55,12 @@ public class AgregarActividad extends JFrame {
     private JScrollPane scrollPanel;
     private JButton confirmarButton;
     private JLabel tituloAgregarLabel;
+
+    /**
+     * Constructor de la ventana para agregar actividades.
+     *
+     * @param ChillManager Gestor que contiene los datos.
+     */
 
     public AgregarActividad(Gestor ChillManager){
         setTitle("Agregar Actividad");
