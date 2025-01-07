@@ -38,6 +38,8 @@ class GestorDatosTest {
                 case "Serie 1" -> assertEquals(serie1.getTitulo(), actividad.getTitulo());
             }
         }
+        actividades = GestorDatos.leerJson("", Actividad.class);
+        assertEquals(new ArrayList<>(), actividades);
     }
 
     @Test
@@ -51,5 +53,6 @@ class GestorDatosTest {
         actividades.add(pelicula1);
         actividades.add(serie1);
         assertTrue(GestorDatos.grabarJson(actividades, "testJsonEscritura.json"));
+        assertFalse(GestorDatos.grabarJson(actividades, ""));
     }
 }
