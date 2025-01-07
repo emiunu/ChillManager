@@ -109,16 +109,35 @@ public class ModificarActividad extends JFrame {
         });
     }
 
+    /**
+     * Método para verificar que el título que se está buscando exista en la colección.
+     *
+     * @param ChillManager Gestor que contiene los datos.
+     * @return Devuelve true si el título se encontró, false si no existe en la lista.
+     */
+
     public boolean validacionBusqueda(String titulo, Gestor ChillManager){
         if (Utilidad.tituloUnico(titulo,ChillManager)){
-            return false; //titulo disponible, no existe resultado.
+            return false; //titulo no se encuentra.
         }
         return true;
     }
 
+    /**
+     * Método para cambiar la etiqueta del tipo correspondiente de la actividad que se buscó.
+     *
+     * @param tipo Tipo identificado en la actividad que se encontró.
+     */
+
     public void cambiarLabelTipo(String tipo){
         tipoToFillLabel.setText(tipo);
     }
+
+    /**
+     * Método para mostrar los paneles con los campos correspondientes según el tipo de actividad que se buscó.
+     *
+     * @param tipo Tipo identificado en la actividad que se encontró.
+     */
 
     public void cambiarPanelTipo(String tipo){
         //Asegurar que los paneles estén ocultos.
@@ -138,6 +157,13 @@ public class ModificarActividad extends JFrame {
         }
     }
 
+    /**
+     * Método para completar los datos en los campos de texto comunes y luego los correspondientes de la actividad que se buscó.
+     *
+     * @param actividad Objeto actividad encontrada para extraer sus campos comunes.
+     * @param tipo Tipo identificado en la actividad que se encontró.
+     */
+
     private void cambiarDatos(Actividad actividad, String tipo){
         tituloText.setText(actividad.getTitulo());
         estadoBox.setSelectedItem(actividad.getStatus().toString());
@@ -154,11 +180,23 @@ public class ModificarActividad extends JFrame {
         }
     }
 
+    /**
+     * Método para completar los datos en los campos de texto correspondientes a la actividad Juego.
+     *
+     * @param actividad Objeto de la actividad encontrada para interpretarla como Juego y extraer sus campos específicos.
+     */
+
     private void datosJuego(Actividad actividad){
         Juego juego = (Juego) actividad;
         fechaJuegoText.setText(String.valueOf(juego.getFecha()));
         dlcText.setText(String.valueOf(juego.getDlc()));
     }
+
+    /**
+     * Método para completar los datos en los campos de texto correspondientes a la actividad Libro.
+     *
+     * @param actividad Objeto de la actividad encontrada para interpretarla como Libro y extraer sus campos específicos.
+     */
 
     private void datosLibro(Actividad actividad){
         Libro libro = (Libro) actividad;
@@ -167,11 +205,23 @@ public class ModificarActividad extends JFrame {
         annoLibroText.setText(String.valueOf(libro.getAnno()));
     }
 
+    /**
+     * Método para completar los datos en los campos de texto correspondientes a la actividad Pelicula.
+     *
+     * @param actividad Objeto de la actividad encontrada para interpretarla como Pelicula y extraer sus campos específicos.
+     */
+
     private void datosPelicula(Actividad actividad){
         Pelicula pelicula = (Pelicula) actividad;
         annoPeliculaText.setText(String.valueOf(pelicula.getAnno()));
         duracionText.setText(String.valueOf(pelicula.getDuracion()));
     }
+
+    /**
+     * Método para completar los datos en los campos de texto correspondientes a la actividad Serie.
+     *
+     * @param actividad Objeto de la actividad encontrada para interpretarla como Serie y extraer sus campos específicos.
+     */
 
     private void datosSerie(Actividad actividad){
         Serie serie = (Serie) actividad;
@@ -180,6 +230,13 @@ public class ModificarActividad extends JFrame {
         tempActualText.setText(String.valueOf(serie.getTemporadaActual()));
         capActualText.setText(String.valueOf(serie.getCapituloActual()));
     }
+
+    /**
+     * Método para extraer los nuevos datos en los campos de texto comunes y luego buscar los demás según el tipo de actividad.
+     *
+     * @param ChillManager Gestor que contiene los datos.
+     * @param tipo Tipo identificado en la actividad que se encontró.
+     */
 
     private void modificarActividad(Gestor ChillManager, String tipo){
         Estado status = Estado.valueOf((String) estadoBox.getSelectedItem());
@@ -197,6 +254,15 @@ public class ModificarActividad extends JFrame {
         }
     }
 
+    /**
+     * Método para extraer los nuevos datos en los campos de texto correspondientes a la actividad Juego.
+     *
+     * @param ChillManager Gestor que contiene los datos.
+     * @param status Nuevo Estado según Estado.enum.
+     * @param rating Nuevo número de rating seleccionado entre 1 y 10.
+     * @param comentario Nuevos comentarios que se quieran agregar en la actividad.
+     */
+
     public void nuevoJuego(Gestor ChillManager, Estado status, int rating, String comentario){
         int fecha = Integer.parseInt(fechaJuegoText.getText());
         int dlc = Integer.parseInt(dlcText.getText());
@@ -204,6 +270,15 @@ public class ModificarActividad extends JFrame {
         Controlador.modificarActividadJuego(juegoOriginal,fecha,dlc,status,rating,comentario);
         JOptionPane.showMessageDialog(ModificarActividad.this,"Se ha modificado exitosamente.","Juego modificado",JOptionPane.INFORMATION_MESSAGE);
     }
+
+    /**
+     * Método para extraer los nuevos datos en los campos de texto correspondientes a la actividad Libro.
+     *
+     * @param ChillManager Gestor que contiene los datos.
+     * @param status Nuevo Estado según Estado.enum.
+     * @param rating Nuevo número de rating seleccionado entre 1 y 10.
+     * @param comentario Nuevos comentarios que se quieran agregar en la actividad.
+     */
 
     public void nuevoLibro(Gestor ChillManager,Estado status, int rating, String comentario) {
         String autor = autorText.getText();
@@ -213,6 +288,15 @@ public class ModificarActividad extends JFrame {
         JOptionPane.showMessageDialog(ModificarActividad.this,"Se ha modificado exitosamente.","Libro modificado",JOptionPane.INFORMATION_MESSAGE);
     }
 
+    /**
+     * Método para extraer los nuevos datos en los campos de texto correspondientes a la actividad Pelicula.
+     *
+     * @param ChillManager Gestor que contiene los datos.
+     * @param status Nuevo Estado según Estado.enum.
+     * @param rating Nuevo número de rating seleccionado entre 1 y 10.
+     * @param comentario Nuevos comentarios que se quieran agregar en la actividad.
+     */
+
     public void nuevaPelicula(Gestor ChillManager, Estado status, int rating, String comentario) {
         int anno = Integer.parseInt(annoPeliculaText.getText());
         int duracion = Integer.parseInt(duracionText.getText());
@@ -220,6 +304,15 @@ public class ModificarActividad extends JFrame {
         Controlador.modificarActividadPelicula(peliculaOriginal,anno,duracion,status,rating,comentario);
         JOptionPane.showMessageDialog(ModificarActividad.this,"Se ha modificado exitosamente.","Pelicula modificada",JOptionPane.INFORMATION_MESSAGE);
     }
+
+    /**
+     * Método para extraer los nuevos datos en los campos de texto correspondientes a la actividad Serie.
+     *
+     * @param ChillManager Gestor que contiene los datos.
+     * @param status Nuevo Estado según Estado.enum.
+     * @param rating Nuevo número de rating seleccionado entre 1 y 10.
+     * @param comentario Nuevos comentarios que se quieran agregar en la actividad.
+     */
 
     public void nuevaSerie(Gestor ChillManager, Estado status, int rating, String comentario) {
         int temporadas = Integer.parseInt(tempTotalesText.getText());

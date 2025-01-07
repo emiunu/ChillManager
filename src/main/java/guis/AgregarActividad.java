@@ -115,23 +115,51 @@ public class AgregarActividad extends JFrame {
 
     }
 
+    /**
+     * Método para validar que los títulos y el ISBN sean únicos para que la colección no tenga elementos duplicados.
+     *
+     * @param ChillManager Gestor que contiene los datos.
+     * @return Devuelve true cuando todas las condiciones se validaron, false si detecta que no se debería poder agregar.
+     */
+
     public boolean validacion(Gestor ChillManager){
         String titulo = tituloText.getText();
         String tipo = (String) tipoBox.getSelectedItem();
-        if (Objects.equals(tipo, "Libro")){
-            int isbn = Integer.parseInt(isbnText.getText());
-            if (!Utilidad.isbnUnico(isbn,ChillManager)){
-                JOptionPane.showMessageDialog(AgregarActividad.this,"Este ISBN ya existe.","Error",JOptionPane.ERROR_MESSAGE);
-                return false;
-            } else if (Utilidad.stringVacio(autorText.getText())){
-                JOptionPane.showMessageDialog(AgregarActividad.this,"Hace falta completar el campo 'Autor/a'.","Error",JOptionPane.ERROR_MESSAGE);
-            }
+        if (Utilidad.stringVacio(titulo)){
+            JOptionPane.showMessageDialog(AgregarActividad.this,"Hace falta completar el campo 'Título'.","Error",JOptionPane.ERROR_MESSAGE);
         } else if (!Utilidad.tituloUnico(titulo,ChillManager)){
             JOptionPane.showMessageDialog(AgregarActividad.this,"Este título ya existe.","Error",JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else if (Objects.equals(tipo, "Libro") && !validarLibro(ChillManager)){
             return false;
         }
         return true;
     }
+
+    /**
+     * Método para validar los campos específicos de la actividad Libro.
+     *
+     * @param ChillManager Gestor que contiene los datos.
+     * @return Devuelve false cada vez que detecta un string vacío o isbn ya registrado, en caso contrario, devuelve true para indicar que se validó para agregar.
+     */
+
+    public boolean validarLibro(Gestor ChillManager){
+        int isbn = Integer.parseInt(isbnText.getText());
+        if (!Utilidad.isbnUnico(isbn,ChillManager)){
+            JOptionPane.showMessageDialog(AgregarActividad.this,"Este ISBN ya existe.","Error",JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else if (Utilidad.stringVacio(autorText.getText())){
+            JOptionPane.showMessageDialog(AgregarActividad.this,"Hace falta completar el campo 'Autor/a'.","Error",JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Método para extraer los datos en los campos de texto comunes entre todas las actividades y luego buscar los necesarios según el tipo.
+     *
+     * @param ChillManager Gestor que contiene los datos.
+     */
 
     public void agregarActividad(Gestor ChillManager){
         String titulo = tituloText.getText();
@@ -151,6 +179,16 @@ public class AgregarActividad extends JFrame {
         }
     }
 
+    /**
+     * Método para extraer los datos en los campos de texto relacionados a la actividad Juego.
+     *
+     * @param titulo Título del juego para agregar
+     * @param status Estado según Estado.enum del juego para agregar.
+     * @param rating Número de rating seleccionado entre 1 y 10.
+     * @param comentario Comentarios que se quieran agregar en la actividad.
+     * @return Devuelve el objeto Juego para poder agregarlo.
+     */
+
     public Juego agregarJuego(String titulo, Estado status, int rating, String comentario){
         int fecha = Integer.parseInt(fechaJuegoText.getText());
         int dlc = Integer.parseInt(dlcText.getText());
@@ -158,6 +196,16 @@ public class AgregarActividad extends JFrame {
         JOptionPane.showMessageDialog(AgregarActividad.this,juegoAgregado.toString(),"Juego agregado",JOptionPane.INFORMATION_MESSAGE);
         return juegoAgregado;
     }
+
+    /**
+     * Método para extraer los datos en los campos de texto relacionados a la actividad Libro.
+     *
+     * @param titulo Título del libro para agregar
+     * @param status Estado según Estado.enum del libro para agregar.
+     * @param rating Número de rating seleccionado entre 1 y 10.
+     * @param comentario Comentarios que se quieran agregar en la actividad.
+     * @return Devuelve el objeto Libro para poder agregarlo.
+     */
 
     public Libro agregarLibro(String titulo, Estado status, int rating, String comentario) {
         int isbn = Integer.parseInt(isbnText.getText());
@@ -168,6 +216,16 @@ public class AgregarActividad extends JFrame {
         return libroAgregado;
     }
 
+    /**
+     * Método para extraer los datos en los campos de texto relacionados a la actividad Pelicula.
+     *
+     * @param titulo Título de la película para agregar
+     * @param status Estado según Estado.enum de la película para agregar.
+     * @param rating Número de rating seleccionado entre 1 y 10.
+     * @param comentario Comentarios que se quieran agregar en la actividad.
+     * @return Devuelve el objeto Pelicula para poder agregarlo.
+     */
+
     public Pelicula agregarPelicula(String titulo, Estado status, int rating, String comentario) {
         int anno = Integer.parseInt(annoPeliculaText.getText());
         int duracion = Integer.parseInt(duracionText.getText());
@@ -175,6 +233,16 @@ public class AgregarActividad extends JFrame {
         JOptionPane.showMessageDialog(AgregarActividad.this, peliculaAgregada.toString(), "Pelicula agregada", JOptionPane.INFORMATION_MESSAGE);
         return peliculaAgregada;
     }
+
+    /**
+     * Método para extraer los datos en los campos de texto relacionados a la actividad Serie.
+     *
+     * @param titulo Título de la serie para agregar
+     * @param status Estado según Estado.enum de la serie para agregar.
+     * @param rating Número de rating seleccionado entre 1 y 10.
+     * @param comentario Comentarios que se quieran agregar en la actividad.
+     * @return Devuelve el objeto Serie para poder agregarlo.
+     */
 
     public Serie agregarSerie(String titulo, Estado status, int rating, String comentario) {
         int temporadas = Integer.parseInt(tempTotalesText.getText());

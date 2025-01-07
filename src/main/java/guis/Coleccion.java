@@ -46,6 +46,12 @@ public class Coleccion extends JFrame {
         });
     }
 
+    /**
+     * Método para completar los datos de la tabla con todas las actividades encontradas en el gestor.
+     *
+     * @param ChillManager Gestor que contiene los datos.
+     */
+
     public void rellenarTabla(Gestor ChillManager){
         DefaultTableModel model = (DefaultTableModel) coleccionTabla.getModel();
         model.setRowCount(0);
@@ -53,6 +59,13 @@ public class Coleccion extends JFrame {
             model.addRow(new Object[]{actividadEnLista.getTitulo(),actividadEnLista.getStatus(),actividadEnLista.getRating(),actividadEnLista.getComentario(),actividadEnLista.getTipo()});
         }
     }
+
+    /**
+     * Método para mostrar los detalles de la actividad seleccionada.
+     *
+     * @param ChillManager Gestor que contiene los datos.
+     * @param fila Número de la fila donde está la actividad seleccionada.
+     */
 
     private void detallarResultado(Gestor ChillManager, int fila){
         String detalle;

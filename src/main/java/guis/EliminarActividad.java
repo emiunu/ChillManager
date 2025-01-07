@@ -68,12 +68,25 @@ public class EliminarActividad extends JFrame {
         });
     }
 
+    /**
+     * Método para verificar que el título que se está buscando exista en la colección.
+     *
+     * @param ChillManager Gestor que contiene los datos.
+     * @return Devuelve true si el título se encontró, false si no existe en la lista.
+     */
+
     public boolean verificarResultado(Gestor ChillManager,String titulo){
         if (!Utilidad.tituloUnico(titulo,ChillManager)){
-            return true;
+            return true; //el título no es único, por lo que sí existe en la lista.
         }
         return false;
     }
+
+    /**
+     * Método para mostrar el resultado de la búsqueda en la tabla.
+     *
+     * @param ChillManager Gestor que contiene los datos.
+     */
 
     public void mostrarResultado(Gestor ChillManager){
         DefaultTableModel model = (DefaultTableModel) resultado.getModel();
@@ -86,6 +99,14 @@ public class EliminarActividad extends JFrame {
             }
         }
     }
+
+    /**
+     * Método para eliminar la actividad en la colección.
+     *
+     * @param ChillManager Gestor que contiene los datos.
+     * @param titulo Título de la actividad que se va a eliminar.
+     * @return
+     */
 
     private void eliminarActividad(Gestor ChillManager, String titulo){
         for (Actividad actividadEnLista : ChillManager.getActividades()){

@@ -64,6 +64,13 @@ public class BuscarActividad extends JFrame {
         });
     }
 
+    /**
+     * Método para verificar que el título que se está buscando exista en la colección.
+     *
+     * @param ChillManager Gestor que contiene los datos.
+     * @return Devuelve true si el título se encontró, false si no existe en la lista.
+     */
+
     public boolean verificarResultado(Gestor ChillManager){
         String titulo = resultadoLabel.getText();
         if (!Utilidad.tituloUnico(titulo,ChillManager)){
@@ -71,6 +78,12 @@ public class BuscarActividad extends JFrame {
         }
         return false;
     }
+
+    /**
+     * Método para mostrar el resultado de la búsqueda en la tabla.
+     *
+     * @param ChillManager Gestor que contiene los datos.
+     */
 
     public void mostrarResultado(Gestor ChillManager){
         DefaultTableModel model = (DefaultTableModel) resultado.getModel();
@@ -83,6 +96,12 @@ public class BuscarActividad extends JFrame {
             }
         }
     }
+
+    /**
+     * Método para mostrar los detalles de la actividad seleccionada.
+     *
+     * @param ChillManager Gestor que contiene los datos.
+     */
 
     private void detallarResultado(Gestor ChillManager){
         String titulo = resultadoLabel.getText();
